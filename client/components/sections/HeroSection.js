@@ -82,13 +82,13 @@ export default function HeroSection() {
               <span className="block">Modern Enterprises</span>
             </h1>
 
-            <p className="mx-auto mt-2.5 max-w-xl text-base leading-relaxed text-[#E5E7EB]/75 sm:mt-3 sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-2.5 max-w-xl text-[12px] md:text-[16px] leading-relaxed text-[#E5E7EB]/75 sm:mt-3 sm:text-lg lg:mx-0">
               TechMantrana helps enterprises across India, GCC, and Europe
               strengthen resilience and achieve regulatory alignment through
               advisory-led cybersecurity, risk, and governance programs.
             </p>
 
-            <div className="mt-4 flex flex-col items-stretch justify-center gap-2 sm:mt-5 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
+            <div className="mt-4 grid grid-cols-2 items-stretch justify-self-start gap-2 sm:mt-5 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
               <motion.div variants={fadeUp} whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                 <Button
                   onClick={() => scrollToId("contact")}
