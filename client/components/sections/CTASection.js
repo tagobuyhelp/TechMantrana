@@ -22,7 +22,7 @@ function InputField({
   className = "",
 }) {
   const base =
-    "mt-1.5 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-4 py-2.5 text-sm text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60";
+    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-4 py-2 text-sm text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60";
 
   if (options && !textarea) {
     return (
@@ -175,11 +175,11 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-24 lg:py-32"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-16 md:py-20"
     >
       <Container>
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
-          <div className="relative px-6 py-12 sm:px-10 lg:px-12">
+          <div className="relative px-6 py-10 sm:px-10 lg:px-12">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
               aria-hidden="true"
@@ -197,7 +197,7 @@ export default function CTASection() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
             <div className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
 
-            <div className="relative grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div className="relative grid gap-6 lg:grid-cols-2 lg:items-start">
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -208,16 +208,16 @@ export default function CTASection() {
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
                   Get Started
                 </div>
-                <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-[#E5E7EB] sm:text-4xl">
+                <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
                   Build a Resilient and Compliant Cybersecurity Foundation
                 </h2>
-                <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#94A3B8] lg:mx-0">
+                <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-[#94A3B8] lg:mx-0">
                   Start with a confidential consultation or request a focused
                   assessment. We help enterprises strengthen controls, validate
                   posture, and align to regulatory requirements.
                 </p>
 
-                <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
+                <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                     <Button onClick={() => {}} aria-label="Talk to Experts">
                       <span className="inline-flex items-center gap-2">
@@ -235,7 +235,7 @@ export default function CTASection() {
                   </motion.div>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
+                <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
                   <TrustRowItem icon={Verified}>Enterprise-ready delivery</TrustRowItem>
                   <TrustRowItem icon={Lock}>Confidential &amp; secure consultation</TrustRowItem>
                   <TrustRowItem icon={Timer}>Response within 24 hours</TrustRowItem>
@@ -247,9 +247,9 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-160px" }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-                className="w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-6 lg:max-w-md lg:justify-self-end"
+                className="w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
               >
-                <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2">
+                <form onSubmit={onSubmit} className="grid gap-3 sm:grid-cols-2">
                   <InputField
                     id="name"
                     label="Name"
@@ -315,7 +315,7 @@ export default function CTASection() {
                     <button
                       type="submit"
                       disabled={!canSubmit}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-[#050B14] transition-colors hover:bg-[#1EA7B8] active:bg-[#168A99] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-2.5 text-sm font-semibold text-[#050B14] transition-colors hover:bg-[#1EA7B8] active:bg-[#168A99] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                       aria-disabled={!canSubmit}
                     >
                       <span className="inline-flex items-center gap-2">

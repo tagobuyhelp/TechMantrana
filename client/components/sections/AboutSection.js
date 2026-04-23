@@ -38,7 +38,7 @@ const highlights = [
 
 function StatCard({ title, description, icon: Icon }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-6 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur">
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.12),transparent_60%)] opacity-60" />
       <div className="flex items-start gap-3">
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)]">
@@ -51,7 +51,7 @@ function StatCard({ title, description, icon: Icon }) {
           </div>
         </div>
       </div>
-      <div className="mt-6 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+      <div className="mt-5 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
     </div>
   );
 }
@@ -74,7 +74,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-24 lg:py-32"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-16 md:py-20"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"
@@ -85,7 +85,7 @@ export default function AboutSection() {
         aria-hidden="true"
       />
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -95,11 +95,11 @@ export default function AboutSection() {
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
               About TechMantrana
             </div>
-            <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-[#E5E7EB] sm:text-4xl">
+            <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
               One Integrated Cybersecurity Capability
             </h2>
-            <div className="mt-5 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#94A3B8]">
+            <div className="mt-4 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-[#94A3B8]">
               TechMantrana unifies cybersecurity, GRC, and risk into a single
               execution-led capability—built for enterprise environments across
               India, GCC, and Europe. We translate control requirements into
@@ -107,11 +107,11 @@ export default function AboutSection() {
               implementation and assurance.
             </p>
 
-            <motion.div variants={fadeUp} className="mt-10">
+            <motion.div variants={fadeUp} className="mt-8">
               <div className="text-sm font-semibold text-[#E5E7EB]">
                 What sets us apart
               </div>
-              <ul className="mt-4 grid gap-3">
+              <ul className="mt-3 grid gap-3">
                 {highlights.map((item) => (
                   <HighlightItem key={item}>{item}</HighlightItem>
                 ))}
@@ -182,7 +182,7 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <div className="mt-5 grid gap-6 sm:grid-cols-2">
               {trustCards.map((card) => (
                 <motion.div key={card.title} variants={fadeUp} className="h-full">
                   <StatCard {...card} />

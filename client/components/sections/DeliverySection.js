@@ -136,7 +136,7 @@ function StepCard({ step }) {
   const Icon = step.icon;
 
   return (
-    <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-[#071426]/90 via-[#061324]/88 to-[#050B14]/95 p-7 shadow-[0_22px_70px_rgba(0,0,0,0.55)] transition hover:border-white/15">
+    <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-[#071426]/90 via-[#061324]/88 to-[#050B14]/95 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.55)] transition hover:border-white/15">
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
         aria-hidden="true"
@@ -155,10 +155,10 @@ function StepCard({ step }) {
         </div>
       </div>
 
-      <div className="relative mt-6">
+      <div className="relative mt-5">
         <div className="text-lg font-semibold text-[#E5E7EB]">{step.title}</div>
-        <div className="mt-3 h-px w-10 bg-[#26C1D3]/70" />
-        <p className="mt-4 text-sm leading-relaxed text-[#94A3B8]">
+        <div className="mt-2 h-px w-10 bg-[#26C1D3]/70" />
+        <p className="mt-3 text-sm leading-relaxed text-[#94A3B8]">
           {step.description}
         </p>
       </div>
@@ -183,7 +183,7 @@ export default function DeliverySection() {
   return (
     <section
       id="delivery"
-      className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-24 lg:py-32"
+      className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-16 md:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
         <Image
@@ -201,10 +201,10 @@ export default function DeliverySection() {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
             Delivery Model
           </div>
-          <h2 className="mt-4 font-heading text-3xl leading-tight tracking-tight text-[#E5E7EB] sm:text-4xl">
+          <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
             Structured Execution from Strategy to Resilience
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-[#94A3B8]">
+          <p className="mt-3 text-base leading-relaxed text-[#94A3B8]">
             A methodical end-to-end approach designed for enterprise delivery:
             define the control strategy, implement securely, validate outcomes,
             and enable teams for sustained resilience.
@@ -216,11 +216,11 @@ export default function DeliverySection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-160px" }}
-          className="mt-14"
+          className="mt-10"
         >
           <Timeline steps={steps} item={item} />
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-8 lg:grid-cols-4">
             {steps.map((step) => (
               <motion.div key={step.title} variants={item} className="h-full">
                 <StepCard step={step} />
