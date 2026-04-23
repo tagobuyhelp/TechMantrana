@@ -40,7 +40,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-5 pb-16 lg:py-14">
+    <section className="relative overflow-hidden pt-5 pb-5 lg:py-14">
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         aria-hidden="true"
@@ -88,7 +88,7 @@ export default function HeroSection() {
               advisory-led cybersecurity, risk, and governance programs.
             </p>
 
-            <div className="mt-4 flex flex-row items-center justify-center gap-2 sm:mt-5 sm:gap-3  md:justify-start gap-2 sm:mt-5 sm:gap-3  sm:items-center lg:justify-start">
+            <div className="mt-4 flex flex-row items-center justify-center  md:justify-start gap-2 sm:mt-5 sm:gap-3  sm:items-center lg:justify-start">
               <motion.div variants={fadeUp} whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                 <Button
                   onClick={() => scrollToId("contact")}
