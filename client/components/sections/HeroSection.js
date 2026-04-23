@@ -88,7 +88,7 @@ export default function HeroSection() {
               advisory-led cybersecurity, risk, and governance programs.
             </p>
 
-            <div className="mt-4 grid grid-cols-2 items-stretch justify-self-start gap-2 sm:mt-5 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
+            <div className="mt-4 flex flex-row items-center justify-center gap-2 sm:mt-5 sm:gap-3  md:justify-start gap-2 sm:mt-5 sm:gap-3  sm:items-center lg:justify-start">
               <motion.div variants={fadeUp} whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                 <Button
                   onClick={() => scrollToId("contact")}
