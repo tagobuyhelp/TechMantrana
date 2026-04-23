@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 import MegaMenu from "./MegaMenu";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./MobileMenu.jsx";
 import NavItem from "./NavItem";
 
 const hoverOpenDelayMs = 140;
@@ -164,7 +164,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDesktopMenu, setOpenDesktopMenu] = useState(null);
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -194,7 +193,6 @@ export default function Navbar() {
   const closeAll = useCallback(() => {
     clearTimers();
     setOpenDesktopMenu(null);
-    setIsMobileMenuOpen(false);
   }, [clearTimers]);
 
   const scheduleOpen = useCallback(
@@ -454,48 +452,8 @@ export default function Navbar() {
             Talk to Experts <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
-
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-lg p-2 text-[#E5E7EB] transition-colors hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 md:hidden"
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMobileMenuOpen}
-          onClick={() => setIsMobileMenuOpen((v) => !v)}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                d="M6 6L18 18M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            ) : (
-              <path
-                d="M4 7H20M4 12H20M4 17H20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
-        </button>
+        <MobileMenu />
       </div>
-
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        activeHash={pathname === "/" ? activeHash : ""}
-        servicesCategories={servicesCategories}
-        regions={regions}
-      />
     </nav>
   );
 }
