@@ -182,7 +182,7 @@ export default function DeliverySection() {
 
   return (
     <section
-      id="delivery"
+      id="regions"
       className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-16 md:py-20"
     >
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">

@@ -50,7 +50,7 @@ export default function HeroSection() {
           alt=""
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 1024px) 100vw, 70vw"
           className="object-cover object-right opacity-35 lg:object-contain lg:opacity-100"
         />
         <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/50 via-[#050B14]/35 to-[#050B14]/85 lg:hidden" />

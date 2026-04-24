@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,8 @@ import {
 } from "lucide-react";
 
 import MegaMenu from "./MegaMenu";
-import MobileMenu from "./MobileMenu.jsx";
+import MobileMenu from "./MobileMenu";
+
 import NavItem from "./NavItem";
 
 const hoverOpenDelayMs = 140;
@@ -147,7 +148,10 @@ const regions = [
 ];
 
 function useMediaQuery(query) {
-  const [matches, setMatches] = useState(false);
+  const [matches, setMatches] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia(query).matches;
+  });
 
   useEffect(() => {
     const media = window.matchMedia(query);
@@ -165,6 +169,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const [openDesktopMenu, setOpenDesktopMenu] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
@@ -193,6 +198,7 @@ export default function Navbar() {
   const closeAll = useCallback(() => {
     clearTimers();
     setOpenDesktopMenu(null);
+    setMobileOpen(false);
   }, [clearTimers]);
 
   const scheduleOpen = useCallback(
@@ -233,6 +239,27 @@ export default function Navbar() {
     }, 0);
     return () => window.clearTimeout(timer);
   }, [pathname, closeAll]);
+
+  const mobileNavLinks = useMemo(
+    () => [
+      { key: "about", label: "About", href: "/#about" },
+      { key: "services", label: "Services" },
+      { key: "regions", label: "Regions", href: "/#regions" },
+      { key: "contact", label: "Contact", href: "/#contact" },
+    ],
+    [],
+  );
+
+  useEffect(() => {
+    document.documentElement.dataset.tmMenuOpen = mobileOpen ? "1" : "0";
+    window.dispatchEvent(
+      new CustomEvent("tm:menu", { detail: { open: Boolean(mobileOpen) } }),
+    );
+    return () => {
+      document.documentElement.dataset.tmMenuOpen = "0";
+      window.dispatchEvent(new CustomEvent("tm:menu", { detail: { open: false } }));
+    };
+  }, [mobileOpen]);
 
   useEffect(() => {
     const onKeyDown = (e) => {
@@ -452,8 +479,35 @@ export default function Navbar() {
             Talk to Experts <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
-        <MobileMenu />
+        <div className="md:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            className="relative inline-flex items-center justify-center rounded-lg p-2 text-[#E5E7EB] transition-[background-color,color,transform] duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+          >
+            <span
+              className="absolute h-0.5 w-5 -translate-y-1.5 rounded-full bg-current"
+              aria-hidden="true"
+            />
+            <span
+              className="absolute h-0.5 w-5 rounded-full bg-current"
+              aria-hidden="true"
+            />
+            <span
+              className="absolute h-0.5 w-5 translate-y-1.5 rounded-full bg-current"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
       </div>
+      <MobileMenu
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        navLinks={mobileNavLinks}
+        servicesCategories={servicesCategories}
+      />
     </nav>
   );
 }

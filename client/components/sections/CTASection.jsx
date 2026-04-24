@@ -113,9 +113,9 @@ function InputField({
 
 function TrustRowItem({ icon: Icon, children }) {
   return (
-    <div className="inline-flex items-center gap-1.5 text-xs text-[#94A3B8] sm:gap-2 sm:text-sm">
+    <div className="inline-flex min-w-0 items-center gap-1.5 text-xs text-[#94A3B8] sm:gap-2 sm:text-sm">
       <Icon className="h-3.5 w-3.5 text-[#26C1D3] sm:h-4 sm:w-4" aria-hidden="true" />
-      <span>{children}</span>
+      <span className="min-w-0 wrap-break-word">{children}</span>
     </div>
   );
 }
@@ -208,11 +208,11 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-16 md:py-20"
+      className="tm-section tm-section--alt relative overflow-x-clip overflow-y-hidden border-t border-white/10 py-16 md:py-20"
     >
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
-          <div className="relative px-4 py-8 sm:px-10 sm:py-10 lg:px-12">
+        <div className="relative w-full max-w-full overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
+          <div className="relative overflow-x-clip px-4 py-8 sm:px-10 sm:py-10 lg:px-12">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
               aria-hidden="true"
@@ -236,7 +236,7 @@ export default function CTASection() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-160px" }}
-                className="text-center lg:text-left"
+                className="min-w-0 text-center lg:text-left"
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
                   Get Started
@@ -280,7 +280,7 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-160px" }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-                className="w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
+                className="min-w-0 w-full max-w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
               >
                 <form onSubmit={onSubmit} className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
                   <InputField

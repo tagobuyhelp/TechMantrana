@@ -29,7 +29,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${playfair.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-(--tm-bg-base) font-body text-[#E5E7EB] antialiased">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-(--tm-bg-base) font-body text-[#E5E7EB] antialiased"
+      >
         {children}
         <MultiCTA assessmentHref="/#contact" />
       </body>

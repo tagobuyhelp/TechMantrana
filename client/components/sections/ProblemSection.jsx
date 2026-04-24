@@ -82,7 +82,7 @@ export default function ProblemSection() {
           alt=""
           fill
           priority={false}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 98vw"
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/95 via-[#050B14]/80 to-[#050B14]/55" />
