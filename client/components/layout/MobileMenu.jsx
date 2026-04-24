@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -77,6 +75,13 @@ export default function MobileMenu() {
   const closeButtonRef = useRef(null);
   const prevFocusRef = useRef(null);
 
+  const broadcastMenuState = useCallback((openState) => {
+    document.documentElement.dataset.tmMenuOpen = openState ? "1" : "0";
+    window.dispatchEvent(
+      new CustomEvent("tm:menu", { detail: { open: Boolean(openState) } })
+    );
+  }, []);
+
   const close = useCallback(() => {
     setIsOpen(false);
     setServicesOpen(false);
@@ -85,19 +90,6 @@ export default function MobileMenu() {
   const open = useCallback(() => {
     setIsOpen(true);
   }, []);
-
-  const toggle = useCallback(() => {
-    setIsOpen((v) => !v);
-  }, []);
-
-  const navItems = useMemo(
-    () => [
-      { label: "About", href: "/#about" },
-      { label: "Regions", href: "/#regions" },
-      { label: "Contact", href: "/#contact" },
-    ],
-    []
-  );
 
   const services = useMemo(
     () => [
@@ -108,6 +100,23 @@ export default function MobileMenu() {
     ],
     []
   );
+
+  const navItems = useMemo(
+    () => [
+      { label: "About", href: "/#about" },
+      { label: "Regions", href: "/#regions" },
+      { label: "Contact", href: "/#contact" },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    broadcastMenuState(isOpen);
+    return () => {
+      if (typeof window === "undefined") return;
+      broadcastMenuState(false);
+    };
+  }, [isOpen, broadcastMenuState]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -166,8 +175,8 @@ export default function MobileMenu() {
       close();
     };
 
-    window.addEventListener("pointerdown", onPointerDown);
-    return () => window.removeEventListener("pointerdown", onPointerDown);
+    document.addEventListener("pointerdown", onPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onPointerDown, true);
   }, [isOpen, close]);
 
   return (
@@ -180,7 +189,7 @@ export default function MobileMenu() {
         }}
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
-        className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/0 text-[#E5E7EB] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+        className="relative inline-flex items-center justify-center rounded-lg p-2 text-[#E5E7EB] transition-[background-color,color,transform] duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
       >
         <span
           className={[
@@ -207,20 +216,23 @@ export default function MobileMenu() {
 
       <div
         className={[
-          "fixed inset-0 z-[999] transition-opacity duration-300",
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+          "fixed inset-0 z-[9999]",
+          isOpen ? "pointer-events-auto" : "pointer-events-none",
         ].join(" ")}
         aria-hidden={!isOpen}
       >
-        <div className="absolute inset-0 bg-[#050B14]/65 backdrop-blur-xl" />
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.18] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[28px_28px]"
+          className={[
+            "absolute inset-0 transition-opacity duration-300",
+            isOpen ? "opacity-100" : "opacity-0",
+          ].join(" ")}
           aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#050B14]/25 via-[#050B14]/35 to-[#050B14]/80"
-          aria-hidden="true"
-        />
+        >
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-[#0B1220]/95 backdrop-blur-xl" />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#0B1220] to-[#0E1628]" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[28px_28px]" />
+        </div>
 
         <div
           ref={panelRef}
@@ -229,20 +241,20 @@ export default function MobileMenu() {
           aria-label="Mobile navigation"
           tabIndex={-1}
           className={[
-            "absolute inset-y-0 right-0 w-full max-w-md border-l border-white/10 bg-[#050B14]/90 shadow-[0_24px_90px_rgba(0,0,0,0.7)]",
-            "transition-[transform,opacity] duration-300 ease-out",
-            isOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0",
+            "absolute inset-0 w-full bg-linear-to-b from-[#0B1220] to-[#0E1628]",
+            "transition-transform duration-300 ease-out",
+            isOpen ? "translate-x-0" : "translate-x-full",
           ].join(" ")}
         >
           <div className="relative h-full">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_20%_10%,rgba(38,193,211,0.14),transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_15%_10%,rgba(38,193,211,0.14),transparent_55%)]" />
 
             <div className="relative flex h-full flex-col">
-              <div className="flex items-center justify-between px-6 pt-6">
+              <div className="flex items-center justify-between px-6 py-8">
                 <Link
                   href="/"
                   onClick={close}
-                  className="inline-flex items-center gap-3 rounded-xl p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                  className="inline-flex items-center rounded-xl p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                   aria-label="TechMantrana home"
                 >
                   <Image
@@ -260,7 +272,7 @@ export default function MobileMenu() {
                   type="button"
                   onClick={close}
                   aria-label="Close menu"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/0 text-[#E5E7EB] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[#111827]/45 text-white transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
                 >
                   <span
                     className="relative h-0.5 w-5 rounded-full bg-current"
@@ -275,31 +287,34 @@ export default function MobileMenu() {
                 </button>
               </div>
 
-              <div className="relative mt-8 flex-1 px-6">
-                <div className="space-y-4">
-                  <Link
-                    href="/#about"
-                    onClick={close}
-                    className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.35)] px-4 py-3 text-lg font-semibold text-[#E5E7EB] transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
-                  >
-                    <span>About</span>
-                    <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                      →
-                    </span>
-                  </Link>
+              <div className="flex-1 overflow-y-auto px-6 pb-28">
+                <nav aria-label="Mobile" className="space-y-5">
+                  {navItems.slice(0, 1).map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={close}
+                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-lg font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                    >
+                      <span>{item.label}</span>
+                      <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                        →
+                      </span>
+                    </Link>
+                  ))}
 
-                  <div className="rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.35)]">
+                  <div className="rounded-2xl border border-white/10 bg-[#111827]/35">
                     <button
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
                       aria-label="Toggle services"
                       aria-expanded={servicesOpen}
-                      className="flex min-h-12 w-full items-center justify-between px-4 py-3 text-left text-lg font-semibold text-[#E5E7EB] transition-[background-color] duration-200 hover:bg-[rgba(15,23,42,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                      className="flex min-h-12 w-full items-center justify-between px-4 py-3 text-left text-lg font-semibold text-white transition-[background-color] duration-200 hover:bg-[#111827]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                     >
                       <span>Services</span>
                       <Chevron
                         className={[
-                          "text-[#94A3B8] transition-transform duration-200",
+                          "text-[#A1AFC3] transition-transform duration-200",
                           servicesOpen ? "rotate-180" : "rotate-0",
                         ].join(" ")}
                       />
@@ -320,7 +335,7 @@ export default function MobileMenu() {
                               key={item.label}
                               href={item.href}
                               onClick={close}
-                              className="group flex min-h-12 items-center justify-between rounded-xl border border-white/10 bg-[rgba(5,11,20,0.3)] px-4 py-3 text-sm font-medium text-[#E5E7EB]/85 transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                              className="group flex min-h-12 items-center justify-between rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] transition-[transform,background-color,border-color,color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                             >
                               <span>{item.label}</span>
                               <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
@@ -333,12 +348,14 @@ export default function MobileMenu() {
                     </div>
                   </div>
 
-                  {navItems.map((item) => (
+                  <div className="h-px w-full bg-white/10" aria-hidden="true" />
+
+                  {navItems.slice(1).map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
                       onClick={close}
-                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.35)] px-4 py-3 text-lg font-semibold text-[#E5E7EB] transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-lg font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                     >
                       <span>{item.label}</span>
                       <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
@@ -346,17 +363,17 @@ export default function MobileMenu() {
                       </span>
                     </Link>
                   ))}
-                </div>
+                </nav>
               </div>
 
-              <div className="relative px-6 pb-6 pt-4">
-                <div className="rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.35)] p-4">
+              <div className="fixed inset-x-0 bottom-0 border-t border-white/10 bg-[#0B1220]/95 px-6 py-6 backdrop-blur-xl">
+                <div className="space-y-4">
                   <div className="flex flex-col gap-3">
                     <Link
                       href="/#contact"
                       onClick={close}
                       aria-label="Talk to Experts"
-                      className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-[#050B14] shadow-[0_16px_40px_rgba(38,193,211,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                      className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-black shadow-[0_16px_40px_rgba(38,193,211,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
                     >
                       Talk to Experts →
                     </Link>
@@ -364,18 +381,18 @@ export default function MobileMenu() {
                       href="/#contact"
                       onClick={close}
                       aria-label="Request Assessment"
-                      className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-[#E5E7EB] transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                      className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
                     >
                       Request Assessment
                     </Link>
                   </div>
-                </div>
 
-                <div className="mt-4 flex items-center gap-2 text-xs text-[#94A3B8]">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
-                    <ShieldMark className="h-5 w-5" />
-                  </span>
-                  <span>ISO 27001 Certified • Enterprise Ready</span>
+                  <div className="flex items-center gap-2 text-xs text-[#A1AFC3]">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#111827]/35 text-[#26C1D3]">
+                      <ShieldMark className="h-5 w-5" />
+                    </span>
+                    <span>ISO 27001 Certified • Enterprise Ready</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -385,4 +402,3 @@ export default function MobileMenu() {
     </div>
   );
 }
-

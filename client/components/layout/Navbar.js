@@ -247,7 +247,7 @@ export default function Navbar() {
     <nav
       aria-label="Primary"
       className={[
-        "sticky top-0 z-50 w-full border-b backdrop-blur-xl backdrop-saturate-150 transition-[background-color,box-shadow,border-color] duration-300",
+        "sticky top-0 z-40 w-full border-b backdrop-blur-xl backdrop-saturate-150 transition-[background-color,box-shadow,border-color] duration-300 lg:z-50",
         isScrolled
           ? "border-[#1E293B]/70 bg-[#050B14]/80 shadow-[0_14px_44px_rgba(0,0,0,0.5)] supports-backdrop-filter:bg-[#050B14]/65"
           : "border-[#1E293B]/45 bg-[#050B14]/55 supports-backdrop-filter:bg-[#050B14]/35",

@@ -36,6 +36,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (max-width: 767px) {
+  :root {
+    --tm-bg-base: #0b1220;
+    --tm-bg-alt: #0e1628;
+    --tm-bg-card: #111827;
+  }
+
+  body {
+    background-color: var(--tm-bg-base);
+    background-image: linear-gradient(to bottom, #0b1220, #0e1628);
+    color: #ffffff;
+  }
+}
+
 .tm-section {
   position: relative;
   isolation: isolate;

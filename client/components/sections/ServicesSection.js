@@ -96,10 +96,10 @@ function ServiceCard({ service }) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.14),transparent_60%)] opacity-70" />
       <div className="relative flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#94A3B8] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3]">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3]">
             <Icon className="h-5 w-5" aria-hidden="true" />
           </div>
-          <div className="shrink-0 rounded-full border border-white/10 bg-[rgba(5,11,20,0.45)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#94A3B8] backdrop-blur">
+          <div className="shrink-0 rounded-full border border-white/10 bg-[#26C1D3] px-3 py-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-black backdrop-blur">
             {service.category}
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-160px" }}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service) => (
             <motion.div key={service.title} variants={item} className="h-full">

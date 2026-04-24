@@ -131,7 +131,7 @@ export default function ProblemSection() {
               transition: { staggerChildren: 0.07, delayChildren: 0.05 },
             },
           }}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {problems.map((item) => (
             <motion.div key={item.title} variants={fadeUp} className="h-full">

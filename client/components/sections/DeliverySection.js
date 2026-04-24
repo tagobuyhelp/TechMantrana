@@ -220,7 +220,7 @@ export default function DeliverySection() {
         >
           <Timeline steps={steps} item={item} />
 
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:mt-8 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:mt-8 lg:grid-cols-4">
             {steps.map((step) => (
               <motion.div key={step.title} variants={item} className="h-full">
                 <StepCard step={step} />

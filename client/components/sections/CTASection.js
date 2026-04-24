@@ -22,7 +22,7 @@ function InputField({
   className = "",
 }) {
   const base =
-    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-4 py-2 text-sm text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60";
+    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-3.5 py-2 text-sm text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:px-4";
 
   if (options && !textarea) {
     return (
@@ -113,8 +113,8 @@ function InputField({
 
 function TrustRowItem({ icon: Icon, children }) {
   return (
-    <div className="inline-flex items-center gap-2 text-sm text-[#94A3B8]">
-      <Icon className="h-4 w-4 text-[#26C1D3]" aria-hidden="true" />
+    <div className="inline-flex items-center gap-1.5 text-xs text-[#94A3B8] sm:gap-2 sm:text-sm">
+      <Icon className="h-3.5 w-3.5 text-[#26C1D3] sm:h-4 sm:w-4" aria-hidden="true" />
       <span>{children}</span>
     </div>
   );
@@ -129,6 +129,8 @@ export default function CTASection() {
     message: "",
   });
   const [touched, setTouched] = useState({});
+  const [submitState, setSubmitState] = useState("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const errors = useMemo(() => {
     const e = {};
@@ -147,7 +149,7 @@ export default function CTASection() {
     setValues((v) => ({ ...v, [key]: evt.target.value }));
   };
 
-  const onSubmit = (evt) => {
+  const onSubmit = async (evt) => {
     evt.preventDefault();
     setTouched({
       name: true,
@@ -157,14 +159,45 @@ export default function CTASection() {
       message: true,
     });
     if (!canSubmit) return;
-    setValues({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
-    setTouched({});
+
+    setSubmitState("submitting");
+    setSubmitMessage("");
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      if (!res.ok) {
+        let msg = "Submission failed. Please try again.";
+        try {
+          const data = await res.json();
+          if (data?.error) msg = data.error;
+        } catch {}
+        setSubmitState("error");
+        setSubmitMessage(msg);
+        return;
+      }
+
+      setSubmitState("success");
+      setSubmitMessage("Thanks — we received your request. We’ll reach out shortly.");
+      setValues({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+      setTouched({});
+    } catch {
+      setSubmitState("error");
+      setSubmitMessage("Submission failed. Please try again.");
+    }
   };
 
   const fadeUp = {
@@ -179,7 +212,7 @@ export default function CTASection() {
     >
       <Container>
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
-          <div className="relative px-6 py-10 sm:px-10 lg:px-12">
+          <div className="relative px-4 py-8 sm:px-10 sm:py-10 lg:px-12">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
               aria-hidden="true"
@@ -197,7 +230,7 @@ export default function CTASection() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
             <div className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
 
-            <div className="relative grid gap-6 lg:grid-cols-2 lg:items-start">
+            <div className="relative grid gap-5 sm:gap-6 lg:grid-cols-2 lg:items-start">
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -208,16 +241,16 @@ export default function CTASection() {
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
                   Get Started
                 </div>
-                <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
+                <h2 className="mt-2.5 font-heading text-2xl leading-[1.12] tracking-tight text-[#E5E7EB] sm:mt-3 sm:text-4xl sm:leading-[1.1]">
                   Build a Resilient and Compliant Cybersecurity Foundation
                 </h2>
-                <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-[#94A3B8] lg:mx-0">
+                <p className="mx-auto mt-2.5 max-w-xl text-sm leading-relaxed text-[#94A3B8] sm:mt-3 sm:text-base lg:mx-0">
                   Start with a confidential consultation or request a focused
                   assessment. We help enterprises strengthen controls, validate
                   posture, and align to regulatory requirements.
                 </p>
 
-                <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
+                <div className="mt-4 flex flex-col items-stretch justify-center gap-2.5 sm:mt-6 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                     <Button onClick={() => {}} aria-label="Talk to Experts">
                       <span className="inline-flex items-center gap-2">
@@ -235,7 +268,7 @@ export default function CTASection() {
                   </motion.div>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
+                <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
                   <TrustRowItem icon={Verified}>Enterprise-ready delivery</TrustRowItem>
                   <TrustRowItem icon={Lock}>Confidential &amp; secure consultation</TrustRowItem>
                   <TrustRowItem icon={Timer}>Response within 24 hours</TrustRowItem>
@@ -247,9 +280,9 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-160px" }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-                className="w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
+                className="w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
               >
-                <form onSubmit={onSubmit} className="grid gap-3 sm:grid-cols-2">
+                <form onSubmit={onSubmit} className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
                   <InputField
                     id="name"
                     label="Name"
@@ -314,16 +347,30 @@ export default function CTASection() {
                   >
                     <button
                       type="submit"
-                      disabled={!canSubmit}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-2.5 text-sm font-semibold text-[#050B14] transition-colors hover:bg-[#1EA7B8] active:bg-[#168A99] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
-                      aria-disabled={!canSubmit}
+                      disabled={!canSubmit || submitState === "submitting"}
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-2.5 text-sm font-semibold text-[#050B14] transition-colors hover:bg-[#1EA7B8] active:bg-[#168A99] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:py-3"
+                      aria-disabled={!canSubmit || submitState === "submitting"}
                     >
                       <span className="inline-flex items-center gap-2">
-                        Submit Request
+                        {submitState === "submitting" ? "Submitting…" : "Submit Request"}
                         <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </span>
                     </button>
                   </motion.div>
+
+                  {submitMessage ? (
+                    <div
+                      className={[
+                        "rounded-xl border px-3.5 py-2.5 text-xs sm:col-span-2 sm:px-4 sm:py-3",
+                        submitState === "success"
+                          ? "border-[#26C1D3]/25 bg-[#0F172A]/55 text-[#E5E7EB]/85"
+                          : "border-white/10 bg-[#0F172A]/35 text-[#94A3B8]",
+                      ].join(" ")}
+                      role={submitState === "error" ? "alert" : "status"}
+                    >
+                      {submitMessage}
+                    </div>
+                  ) : null}
 
                   <div className="text-xs text-[#94A3B8] sm:col-span-2">
                     By submitting, you agree to be contacted about your request.

@@ -79,16 +79,28 @@ function ArrowUpIcon({ className, ...props }) {
 }
 
 export default function MultiCTA({
-  phoneHref = "tel:+0000000000",
-  whatsappHref = "https://wa.me/0000000000",
+  phoneHref = "tel:+971522933862",
+  whatsappHref = "https://wa.me/971522933862",
   assessmentHref = "/#contact",
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isNearFooter, setIsNearFooter] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isVisibleRef = useRef(false);
   const rafIdRef = useRef(null);
   const rootRef = useRef(null);
+
+  useEffect(() => {
+    const getInitial = () =>
+      typeof document !== "undefined" &&
+      document.documentElement?.dataset?.tmMenuOpen === "1";
+    setIsMenuOpen(getInitial());
+
+    const onMenu = (e) => setIsMenuOpen(Boolean(e?.detail?.open));
+    window.addEventListener("tm:menu", onMenu);
+    return () => window.removeEventListener("tm:menu", onMenu);
+  }, []);
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -154,7 +166,7 @@ export default function MultiCTA({
     };
   }, [isExpanded]);
 
-  const shouldShow = isVisible && !isNearFooter;
+  const shouldShow = isVisible && !isNearFooter && !isMenuOpen;
 
   const actions = useMemo(
     () => [
