@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/50 via-[#050B14]/35 to-[#050B14]/85 lg:hidden" />
       </div>
 
-      <Container className="relative z-10 bg-linear-to-b from-[#050B14] via-[#050B14]/88 to-[#050B14]/65 lg:bg-linear-to-r lg:from-[#050B14] lg:via-[#050B14]/92 lg:to-transparent lg:via-[#050B14]/75">
+      <Container className="relative z-10 bg-linear-to-b from-[#050B14] via-[#050B14]/88 to-[#050B14]/65 lg:bg-linear-to-r lg:from-[#050B14] lg:via-[#050B14]/75 lg:to-transparent">
         <motion.div
           initial="hidden"
           whileInView="show"

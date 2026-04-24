@@ -1,7 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -43,7 +43,13 @@ module.exports = {
       backgroundImage: {
         "brand-gradient": "linear-gradient(135deg, #0B5ED7, #26C1D3)",
       },
+      zIndex: {
+        9999: "9999",
+        10000: "10000",
+      },
     },
   },
   plugins: [],
 };
+
+export default config;
