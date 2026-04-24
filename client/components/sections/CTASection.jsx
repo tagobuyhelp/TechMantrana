@@ -22,12 +22,12 @@ function InputField({
   className = "",
 }) {
   const base =
-    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-3.5 py-2 text-sm text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:px-4";
+    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-3 py-2 text-[13px] text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:px-4 sm:text-sm";
 
   if (options && !textarea) {
     return (
       <div className={className}>
-        <label htmlFor={id} className="text-sm font-medium text-[#E5E7EB]">
+        <label htmlFor={id} className="text-xs font-medium text-[#E5E7EB] sm:text-sm">
           {label}
           {required ? <span className="text-[#94A3B8]"> *</span> : null}
         </label>
@@ -79,7 +79,7 @@ function InputField({
 
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-sm font-medium text-[#E5E7EB]">
+      <label htmlFor={id} className="text-xs font-medium text-[#E5E7EB] sm:text-sm">
         {label}
         {required ? <span className="text-[#94A3B8]"> *</span> : null}
       </label>
@@ -90,7 +90,7 @@ function InputField({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          rows={3}
+          rows={2}
           className={[base, error ? "border-[#26C1D3]/60" : ""].join(" ")}
         />
       ) : (
@@ -208,11 +208,11 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="tm-section tm-section--alt relative overflow-x-clip overflow-y-hidden border-t border-white/10 py-16 md:py-20"
+      className="tm-section tm-section--alt relative overflow-x-clip overflow-y-hidden border-t border-white/10 py-12 sm:py-16 md:py-20"
     >
       <Container>
         <div className="relative w-full max-w-full overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
-          <div className="relative overflow-x-clip px-4 py-8 sm:px-10 sm:py-10 lg:px-12">
+          <div className="relative overflow-x-clip px-4 py-7 sm:px-10 sm:py-10 lg:px-12">
             <div
               className="pointer-events-none absolute inset-0 -z-10"
               aria-hidden="true"
@@ -230,7 +230,7 @@ export default function CTASection() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
             <div className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
 
-            <div className="relative grid gap-5 sm:gap-6 lg:grid-cols-2 lg:items-start">
+            <div className="relative grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -250,7 +250,7 @@ export default function CTASection() {
                   posture, and align to regulatory requirements.
                 </p>
 
-                <div className="mt-4 flex flex-col items-stretch justify-center gap-2.5 sm:mt-6 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
+                <div className="mt-3 flex flex-col items-stretch justify-center gap-2.5 sm:mt-6 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
                     <Button onClick={() => {}} aria-label="Talk to Experts">
                       <span className="inline-flex items-center gap-2">
@@ -268,7 +268,7 @@ export default function CTASection() {
                   </motion.div>
                 </div>
 
-                <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
+                <div className="mt-3 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-2 lg:justify-start">
                   <TrustRowItem icon={Verified}>Enterprise-ready delivery</TrustRowItem>
                   <TrustRowItem icon={Lock}>Confidential &amp; secure consultation</TrustRowItem>
                   <TrustRowItem icon={Timer}>Response within 24 hours</TrustRowItem>
@@ -280,9 +280,9 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-160px" }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-                className="min-w-0 w-full max-w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
+                className="min-w-0 w-full max-w-full rounded-2xl border border-white/10 bg-[rgba(5,11,20,0.45)] p-3.5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] sm:p-5 lg:max-w-md lg:justify-self-end"
               >
-                <form onSubmit={onSubmit} className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
+                <form onSubmit={onSubmit} className="grid gap-2 sm:grid-cols-2 sm:gap-3">
                   <InputField
                     id="name"
                     label="Name"

@@ -38,20 +38,20 @@ const highlights = [
 
 function StatCard({ title, description, icon: Icon }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur">
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.12),transparent_60%)] opacity-60" />
       <div className="flex items-start gap-3">
-        <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)]">
-          <Icon className="h-5 w-5" aria-hidden="true" />
+        <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12">
+          <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
         <div className="min-w-0">
           <div className="text-sm font-semibold text-[#E5E7EB]">{title}</div>
-          <div className="mt-1 text-sm leading-relaxed text-[#94A3B8]">
+          <div className="mt-1 text-xs leading-relaxed text-[#94A3B8] sm:text-sm">
             {description}
           </div>
         </div>
       </div>
-      <div className="mt-5 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+      <div className="mt-4 h-px w-10 bg-[#26C1D3]/60 sm:mt-5" aria-hidden="true" />
     </div>
   );
 }
@@ -74,7 +74,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-16 md:py-20"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-12 sm:py-16 md:py-20"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"
@@ -85,7 +85,7 @@ export default function AboutSection() {
         aria-hidden="true"
       />
       <Container>
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -95,11 +95,11 @@ export default function AboutSection() {
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
               About TechMantrana
             </div>
-            <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
+            <h2 className="mt-3 font-heading text-2xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-3xl lg:text-4xl">
               One Integrated Cybersecurity Capability
             </h2>
-            <div className="mt-4 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-[#94A3B8]">
+            <div className="mt-3 h-px w-10 bg-[#26C1D3]/60 sm:mt-4" aria-hidden="true" />
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8] sm:text-base">
               TechMantrana unifies cybersecurity, GRC, and risk into a single
               execution-led capability—built for enterprise environments across
               India, GCC, and Europe. We translate control requirements into
@@ -107,11 +107,11 @@ export default function AboutSection() {
               implementation and assurance.
             </p>
 
-            <motion.div variants={fadeUp} className="mt-8">
+            <motion.div variants={fadeUp} className="mt-6 sm:mt-8">
               <div className="text-sm font-semibold text-[#E5E7EB]">
                 What sets us apart
               </div>
-              <ul className="mt-3 grid gap-3">
+              <ul className="mt-3 grid gap-2.5 sm:gap-3">
                 {highlights.map((item) => (
                   <HighlightItem key={item}>{item}</HighlightItem>
                 ))}
@@ -137,7 +137,7 @@ export default function AboutSection() {
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#050B14]/75 via-transparent to-transparent" />
                 <div className="pointer-events-none absolute inset-0 opacity-[0.14] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[34px_34px]" />
 
-                <div className="relative h-72 sm:h-80 lg:h-96">
+                <div className="relative h-60 sm:h-80 lg:h-96">
                   <Image
                     src="/images/techmantrana-about-cybersecurity-consulting-team.png"
                     alt=""
@@ -182,7 +182,7 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            <div className="mt-5 grid gap-6 sm:grid-cols-2">
+            <div className="mt-4 grid gap-4 sm:mt-5 sm:grid-cols-2 sm:gap-6">
               {trustCards.map((card) => (
                 <motion.div key={card.title} variants={fadeUp} className="h-full">
                   <StatCard {...card} />

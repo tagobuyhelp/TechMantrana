@@ -90,30 +90,30 @@ function ServiceCard({ service }) {
       href={service.href}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[border-color,background-color,box-shadow,transform] duration-200 hover:border-[#26C1D3]/35 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[border-color,background-color,box-shadow,transform] duration-200 hover:border-[#26C1D3]/35 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14] sm:p-5"
       aria-label={service.title}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.14),transparent_60%)] opacity-70" />
       <div className="relative flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3]">
-            <Icon className="h-5 w-5" aria-hidden="true" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3] sm:h-12 sm:w-12">
+            <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
           </div>
-          <div className="shrink-0 rounded-full border border-white/10 bg-[#26C1D3] px-3 py-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-black backdrop-blur">
+          <div className="shrink-0 rounded-full border border-white/10 bg-[#26C1D3] px-2.5 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-black backdrop-blur sm:px-3 sm:py-1 sm:text-[8px]">
             {service.category}
           </div>
         </div>
 
-        <div className="mt-4 flex-1">
-          <div className="text-base font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#26C1D3]">
+        <div className="mt-3 flex-1 sm:mt-4">
+          <div className="text-sm font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#26C1D3] sm:text-base">
             {service.title}
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
+          <p className="mt-2 text-xs leading-relaxed text-[#94A3B8] sm:text-sm">
             {service.description}
           </p>
         </div>
 
-        <div className="mt-5 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+        <div className="mt-4 h-px w-10 bg-[#26C1D3]/60 sm:mt-5" aria-hidden="true" />
       </div>
 
       <div
@@ -145,7 +145,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-16 md:py-20"
+      className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-12 sm:py-16 md:py-20"
     >
       <div
         className="pointer-events-none absolute inset-0 -z-10"
@@ -167,10 +167,10 @@ export default function ServicesSection() {
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
               Core Capabilities
             </div>
-            <h2 className="mt-3 font-heading text-3xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-4xl">
+            <h2 className="mt-3 font-heading text-2xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-3xl lg:text-4xl">
               Integrated Cybersecurity &amp; Risk Services
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-[#94A3B8]">
+            <p className="mt-3 text-sm leading-relaxed text-[#94A3B8] sm:text-base">
               A structured consulting model spanning governance, risk, engineering,
               and resilience—designed for enterprise environments and regulated
               industries.
@@ -183,7 +183,7 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-160px" }}
-          className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-3"
         >
           {services.map((service) => (
             <motion.div key={service.title} variants={item} className="h-full">

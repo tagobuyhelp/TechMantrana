@@ -225,7 +225,7 @@ export default function MobileMenu({
         style={{ zIndex: 10000 }}
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
+          <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6 sm:py-5">
             <Link
               href="/"
               onClick={closeMenu}
@@ -252,8 +252,8 @@ export default function MobileMenu({
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-6 py-5">
-            <nav aria-label="Mobile" className="space-y-3">
+          <div className="flex-1 overflow-y-auto px-5 py-4 sm:px-6 sm:py-5">
+            <nav aria-label="Mobile" className="space-y-2.5 sm:space-y-3">
               {links
                 .filter((l) => l && l.href)
                 .map((l) => {
@@ -263,10 +263,10 @@ export default function MobileMenu({
                       key={l.href}
                       href={l.href}
                       onClick={closeMenu}
-                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-lg font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-base font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:text-lg"
                     >
                       <span className="flex min-w-0 items-center gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-9 sm:w-9">
                           {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
                         </span>
                         <span className="truncate">{l.label}</span>
@@ -281,9 +281,9 @@ export default function MobileMenu({
               {servicesLink || hasServices ? (
                 <div className="rounded-2xl border border-white/10 bg-[#111827]/35">
                   <details className="group">
-                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 py-3 text-lg font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60">
+                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 py-3 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:text-lg">
                       <span className="flex min-w-0 items-center gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-9 sm:w-9">
                           <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                         </span>
                         <span className="truncate">{servicesLink?.label || "Services"}</span>
@@ -301,7 +301,7 @@ export default function MobileMenu({
                               className="group flex min-h-12 items-center justify-between rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] transition-[transform,background-color,border-color,color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
                             >
                               <span className="flex min-w-0 flex-1 items-center gap-3">
-                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#26C1D3]">
+                                <span className="flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#26C1D3] sm:h-8 sm:w-8">
                                   {svc.icon ? (
                                     <svc.icon className="h-4 w-4" aria-hidden="true" />
                                   ) : null}
@@ -335,7 +335,7 @@ export default function MobileMenu({
             </nav>
           </div>
 
-          <div className="sticky bottom-0 border-t border-white/10 bg-[#0B1220]/92 px-6 py-5 backdrop-blur-xl">
+          <div className="sticky bottom-0 border-t border-white/10 bg-[#0B1220]/92 px-5 py-4 backdrop-blur-xl sm:px-6 sm:py-5">
             <div className="flex flex-col gap-3">
               <Link
                 href="/#contact"
