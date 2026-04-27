@@ -295,10 +295,10 @@ export default function Navbar() {
             <Image
               src="/images/logos/logoHorizontal.png"
               alt=""
-              width={290}
-              height={70}
+              width={390}
+              height={90}
               priority
-              className="h-8 w-auto drop-shadow-[0_0_22px_rgba(38,193,211,0.22)] lg:h-9"
+              className="h-14 w-auto drop-shadow-[0_0_22px_rgba(38,193,211,0.22)] lg:h-16"
             />
           </Link>
         </div>
