@@ -6,6 +6,7 @@ import {
   Check,
   Mail,
   MapPin,
+  Phone,
   ShieldCheck,
   UserRound,
 } from "lucide-react";
@@ -66,14 +67,14 @@ function XMark({ className, ...props }) {
 export default function Footer() {
   return (
     <footer className="tm-section tm-section--image relative mt-14 overflow-hidden border-t border-white/10 sm:mt-20">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <Image
           src="/images/techmantrana-footer-section.png"
           alt="TechMantrana Footer Section"
           fill
           priority={false}
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center opacity-25 sm:opacity-30 lg:opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/12 via-[#050B14]/25 to-[#050B14]/56" />
         <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/12 via-[#050B14]/28 to-[#050B14]/55" />
@@ -82,7 +83,7 @@ export default function Footer() {
         className="pointer-events-none absolute -right-24 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.14),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
-      <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-16 lg:py-20">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-16 lg:py-20">
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-12">
           <div className="md:col-span-1">
             <Link
@@ -182,7 +183,18 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold text-[#E5E7EB]">Contact</h3>
-            <div className="mt-3 sm:mt-4">
+            <div className="mt-3 space-y-3 sm:mt-4">
+              <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-4 sm:py-3">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-10 sm:w-10">
+                  <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
+                </span>
+                <a
+                  href="tel:+919903142550"
+                  className="mt-2 font-medium text-[#26C1D3] transition-colors hover:text-[#1EA7B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                >
+                  +91 9903142550
+                </a>
+              </div>
               <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-4 sm:py-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-10 sm:w-10">
                   <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />

@@ -112,3 +112,9 @@ body {
     line-height: 1.15;
   }
 }
+
+@layer components {
+  .tm-kicker {
+    @apply inline-flex items-center justify-center rounded-full border border-[#26C1D3]/25 bg-[#061424]/55 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#26C1D3] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)];
+  }
+}

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ClipboardList, Lock, Timer, Verified } from "lucide-react";
+import { ArrowRight, ClipboardList, Lock, Phone, Timer, Verified } from "lucide-react";
 import Image from "next/image";
 
 import Button from "../ui/Button";
@@ -208,13 +208,13 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="tm-section tm-section--alt relative overflow-x-clip overflow-y-hidden border-t border-white/10 py-12 sm:py-16 md:py-20"
+      className="tm-section tm-section--alt relative overflow-x-clip overflow-y-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
     >
       <Container>
         <div className="relative w-full max-w-full overflow-hidden rounded-3xl border border-white/10 bg-top-right bg-(--tm-bg-card)/60 shadow-[0_22px_70px_rgba(0,0,0,0.5)]">
-          <div className="relative overflow-x-clip px-4 py-7 sm:px-10 sm:py-10 lg:px-12">
+          <div className="relative overflow-x-clip px-4 py-6 sm:px-10 sm:py-9 lg:px-12">
             <div
-              className="pointer-events-none absolute inset-0 -z-10"
+              className="pointer-events-none absolute inset-0 z-0"
               aria-hidden="true"
             >
               <Image
@@ -223,14 +223,14 @@ export default function CTASection() {
                 fill
                 priority={false}
                 sizes="100vw"
-                className="object-cover object-left"
+                className="object-cover object-left opacity-25 sm:opacity-30 lg:opacity-40"
               />
-              <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/55 via-[#050B14]/50 to-[#050B14]/80" />
+              <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/70 via-[#050B14]/55 to-[#050B14]/86" />
             </div>
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
-            <div className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
+            <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
 
-            <div className="relative grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
+            <div className="relative z-10 grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
@@ -238,13 +238,11 @@ export default function CTASection() {
                 viewport={{ once: true, margin: "-160px" }}
                 className="min-w-0 text-center lg:text-left"
               >
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
-                  Get Started
-                </div>
-                <h2 className="mt-2.5 font-heading text-2xl leading-[1.12] tracking-tight text-[#E5E7EB] sm:mt-3 sm:text-4xl sm:leading-[1.1]">
+                <div className="tm-kicker">Get Started</div>
+                <h2 className="mt-2.5 font-heading text-2xl font-semibold leading-[1.12] tracking-tight text-[#F8FAFC] sm:mt-3 sm:text-4xl sm:leading-[1.1]">
                   Build a Resilient and Compliant Cybersecurity Foundation
                 </h2>
-                <p className="mx-auto mt-2.5 max-w-xl text-sm leading-relaxed text-[#94A3B8] sm:mt-3 sm:text-base lg:mx-0">
+                <p className="mx-auto mt-2.5 max-w-xl text-sm leading-relaxed text-[#A1AFC3] sm:mt-3 sm:text-base lg:mx-0">
                   Start with a confidential consultation or request a focused
                   assessment. We help enterprises strengthen controls, validate
                   posture, and align to regulatory requirements.
@@ -272,6 +270,17 @@ export default function CTASection() {
                   <TrustRowItem icon={Verified}>Enterprise-ready delivery</TrustRowItem>
                   <TrustRowItem icon={Lock}>Confidential &amp; secure consultation</TrustRowItem>
                   <TrustRowItem icon={Timer}>Response within 24 hours</TrustRowItem>
+                </div>
+                <div className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-[#E5E7EB]/80 lg:justify-start">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+                    <Phone className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <a
+                    href="tel:+919903142550"
+                    className="text-[#26C1D3] transition-colors hover:text-[#1EA7B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                  >
+                    +91 9903142550
+                  </a>
                 </div>
               </motion.div>
 
@@ -308,7 +317,7 @@ export default function CTASection() {
                     type="tel"
                     value={values.phone}
                     onChange={onChange("phone")}
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+91 9903142550"
                     error={touched.phone ? errors.phone : undefined}
                   />
                   <InputField

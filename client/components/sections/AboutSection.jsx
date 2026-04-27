@@ -8,8 +8,8 @@ import Container from "../ui/Container";
 
 const trustCards = [
   {
-    title: "ISO/IEC 27001:2022 Certified",
-    description: "Security governance aligned to global standards",
+    title: "Security & Privacy Governance",
+    description: "Controls-first approach with audit-ready evidence",
     icon: BadgeCheck,
   },
   {
@@ -74,7 +74,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-12 sm:py-16 md:py-20"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"
@@ -92,14 +92,12 @@ export default function AboutSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-160px" }}
           >
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
-              About TechMantrana
-            </div>
-            <h2 className="mt-3 font-heading text-2xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-3xl lg:text-4xl">
+            <div className="tm-kicker">About TechMantrana</div>
+            <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
               One Integrated Cybersecurity Capability
             </h2>
             <div className="mt-3 h-px w-10 bg-[#26C1D3]/60 sm:mt-4" aria-hidden="true" />
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#94A3B8] sm:text-base">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
               TechMantrana unifies cybersecurity, GRC, and risk into a single
               execution-led capability—built for enterprise environments across
               India, GCC, and Europe. We translate control requirements into

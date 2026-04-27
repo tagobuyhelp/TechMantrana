@@ -75,15 +75,15 @@ export default function ProblemSection() {
   };
 
   return (
-    <section className="tm-section tm-section--alt tm-section--image relative overflow-hidden border-t border-white/10 py-12 sm:py-16 md:py-20">
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <section className="tm-section tm-section--alt tm-section--image relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <Image
           src="/images/techmantrana-problem-section-wide.png"
           alt=""
           fill
           priority={false}
           sizes="(max-width: 768px) 100vw, 98vw"
-          className="object-cover object-center"
+          className="object-cover object-center opacity-25 sm:opacity-30 lg:opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/95 via-[#050B14]/80 to-[#050B14]/55" />
         <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/40 via-[#050B14]/25 to-[#050B14]/55" />
@@ -96,7 +96,7 @@ export default function ProblemSection() {
         className="pointer-events-none absolute -right-24 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.25),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
-      <Container>
+      <Container className="relative z-10">
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
             variants={fadeUp}
@@ -105,13 +105,11 @@ export default function ProblemSection() {
             viewport={{ once: true, margin: "-160px" }}
             className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left"
           >
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#26C1D3]">
-              Challenges
-            </div>
-            <h2 className="mt-3 font-heading text-2xl leading-[1.1] tracking-tight text-[#E5E7EB] sm:text-3xl lg:text-4xl">
+            <div className="tm-kicker">Challenges</div>
+            <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
               Managing Cybersecurity Across Multiple Regulations Is Complex
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[#94A3B8] sm:text-base">
+            <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
               Most organizations operate across fragmented systems and overlapping
               frameworks—without a unified control model to connect security,
               compliance, and risk.
@@ -131,7 +129,7 @@ export default function ProblemSection() {
               transition: { staggerChildren: 0.07, delayChildren: 0.05 },
             },
           }}
-          className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:gap-6 lg:grid-cols-4"
+          className="mt-7 grid grid-cols-2 gap-4 sm:mt-9 sm:gap-6 lg:grid-cols-4"
         >
           {problems.map((item) => (
             <motion.div key={item.title} variants={fadeUp} className="h-full">

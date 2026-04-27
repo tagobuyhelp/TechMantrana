@@ -14,6 +14,7 @@ import {
   FileLock,
   Gavel,
   Globe,
+  Phone,
   Radar,
   Shield,
   ShieldCheck,
@@ -472,6 +473,14 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
+          <a
+            href="tel:+919903142550"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-[#E5E7EB]/85 shadow-[0_18px_50px_rgba(0,0,0,0.35)] transition-[background-color,border-color,transform] duration-200 hover:scale-[1.02] hover:border-[#26C1D3]/30 hover:bg-white/7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:scale-[0.99]"
+            aria-label="Call +91 9903142550"
+          >
+            <Phone className="h-4 w-4 text-[#26C1D3]" aria-hidden="true" />
+            +91 9903142550
+          </a>
           <Link
             href="/#contact"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-[#050B14] shadow-[0_18px_40px_rgba(38,193,211,0.16)] transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.03] hover:bg-[#1EA7B8] hover:shadow-[0_24px_60px_rgba(38,193,211,0.22)] active:scale-[0.99] active:bg-[#168A99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"

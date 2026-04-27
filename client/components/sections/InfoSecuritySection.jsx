@@ -1,0 +1,124 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { BadgeCheck, ShieldCheck } from "lucide-react";
+
+import Container from "../ui/Container";
+
+const pillars = [
+  {
+    title: "Confidentiality",
+    description: "Protect sensitive information with access controls and least-privilege governance.",
+  },
+  {
+    title: "Integrity",
+    description: "Maintain accuracy and trust through change control, validation, and evidence-driven assurance.",
+  },
+  {
+    title: "Availability",
+    description: "Sustain business operations with resilience planning, recovery readiness, and continuity practices.",
+  },
+];
+
+function PillarCard({ item }) {
+  return (
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-5">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.12),transparent_60%)] opacity-55" />
+      <div className="relative">
+        <div className="text-base font-semibold tracking-tight text-[#F8FAFC]">
+          {item.title}
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-[#A1AFC3]">
+          {item.description}
+        </p>
+      </div>
+      <div className="relative mt-4 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+    </div>
+  );
+}
+
+export default function InfoSecuritySection() {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 14 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  };
+
+  return (
+    <section
+      id="infosec"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
+      aria-label="Information Security and Data Privacy"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-28 top-12 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.18),transparent_62%)] blur-2xl"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-160px" }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <div className="tm-kicker">Information Security &amp; Data Privacy</div>
+          <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
+            Built on Enterprise-Grade Security Governance
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
+            Our delivery is anchored in security-by-design and privacy-first principles, with clear controls and audit-ready evidence across programs.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-160px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+          }}
+          className="mt-7 grid gap-4 sm:mt-9 sm:gap-6 lg:grid-cols-12"
+        >
+          <motion.div variants={fadeUp} className="lg:col-span-5">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-5">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(620px_circle_at_18%_0%,rgba(38,193,211,0.14),transparent_60%)] opacity-60" />
+              <div className="relative flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12">
+                  <BadgeCheck className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold text-[#F8FAFC]">
+                    ISO/IEC 27001:2022 Certified
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-[#A1AFC3]">
+                    Our information security management approach is governed by structured controls, risk treatment, and continual improvement—supporting enterprise compliance credibility.
+                  </p>
+                </div>
+              </div>
+              <div className="relative mt-4 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+                  <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+                </span>
+                CIA-aligned controls across delivery
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-6 lg:col-span-7 lg:grid-cols-3">
+            {pillars.map((item) => (
+              <motion.div key={item.title} variants={fadeUp} className="h-full">
+                <PillarCard item={item} />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </Container>
+    </section>
+  );
+}

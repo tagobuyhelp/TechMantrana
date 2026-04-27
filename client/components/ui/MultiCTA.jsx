@@ -79,8 +79,8 @@ function ArrowUpIcon({ className, ...props }) {
 }
 
 export default function MultiCTA({
-  phoneHref = "tel:+971522933862",
-  whatsappHref = "https://wa.me/971522933862",
+  phoneHref = "tel:+919903142550",
+  whatsappHref = "https://wa.me/919903142550",
   assessmentHref = "/#contact",
 }) {
   const [isVisible, setIsVisible] = useState(false);
