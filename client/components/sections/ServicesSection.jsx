@@ -2,14 +2,11 @@
 
 import { motion } from "framer-motion";
 import {
-  BadgeCheck,
   Bug,
   FileLock,
-  Gavel,
   Globe,
   Radar,
   ShieldCheck,
-  UserCog,
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
@@ -18,130 +15,89 @@ import Container from "../ui/Container";
 
 const services = [
   {
-    title: "GRC & Compliance Advisory",
+    title: "Governance, Risk and Security Advisory",
     description:
-      "Build and operate governance programs that translate regulatory expectations into practical controls, evidence, and executive reporting.",
+      "Strategy, governance design, risk management, and security leadership - from program design to ongoing oversight.",
     category: "Advisory",
     icon: ShieldCheck,
     href: "/#services",
     bullets: [
-      "Control mapping across frameworks (ISO 27001, SOC 2, NIST, PCI, RBI/SEBI-ready)",
-      "Policy, risk, and control library development",
-      "Audit readiness, evidence packs, and remediation tracking",
+      "Security strategy, maturity assessment, and program roadmap development",
+      "Information security governance framework, control design, and policy development",
+      "ISMS internal audit - planning, execution, nonconformity reporting, and corrective action follow-up",
+      "Virtual CISO - on-demand security leadership and governance oversight",
     ],
-    standards: ["ISO 27001", "ISO 27017", "ISO 27035", "ISO 22301"],
   },
   {
-    title: "Cybersecurity Consulting",
+    title: "Regulatory Compliance and Privacy",
     description:
-      "Establish a security strategy that aligns to business priorities, accelerates measurable risk reduction, and supports enterprise-scale execution.",
-    category: "Advisory",
-    icon: BadgeCheck,
+      "Alignment with cybersecurity and data protection obligations across India, GCC, and Europe - from gap assessment to ongoing compliance.",
+    category: "Compliance",
+    icon: FileLock,
     href: "/#services",
     bullets: [
-      "Security maturity assessments and target-state roadmap",
-      "Operating model, governance, and stakeholder alignment",
-      "Assurance-led programs with metrics and executive reporting",
+      "India: RBI, SEBI CSCRF, IRDAI, DPDP Act, NCIIPC, MeitY Guidelines",
+      "UAE: UAE IAR, DESC ISR, CBUAE SVF, ADHICS",
+      "GCC: NCA Framework, SAMA Cyber Security and BCM Framework, Qatar NIA, NISCF, QCB Cybersecurity Requirement",
+      "Europe: GDPR, NIS2, DORA",
     ],
-    standards: ["NIST CSF 2.0", "CIS Controls", "ISO 27001"],
   },
   {
-    title: "Risk Assessment & Threat Analysis",
+    title: "Security Assessment and Testing",
     description:
-      "Identify and quantify risk across assets, applications, and third parties to prioritize controls and investments with clear business context.",
-    category: "Risk",
-    icon: Radar,
-    href: "/#services",
-    bullets: [
-      "Threat modeling and attack path analysis",
-      "Asset, application, and third-party risk assessments",
-      "Risk register, treatment plans, and measurable mitigation",
-    ],
-    standards: ["ISO 27005", "NIST SP 800-30", "MITRE ATT&CK"],
-  },
-  {
-    title: "VAPT & Security Testing",
-    description:
-      "Validate security posture through targeted offensive testing with clear findings, reproducible evidence, and remediation guidance.",
+      "Independent validation of security posture through structured testing, technical assessment, adversarial simulation, and secure engineering.",
     category: "Testing",
     icon: Bug,
     href: "/#services",
     bullets: [
-      "Network, web, API, and cloud configuration testing",
-      "Exploit validation with risk-based prioritization",
-      "Remediation guidance and re-test closure support",
+      "Network, web application, mobile, and API security testing",
+      "Red team exercises, threat-led penetration testing, and security control validation",
+      "Secure architecture design, DevSecOps integration, and application security review",
+      "Security automation and findings remediation support",
     ],
     standards: ["OWASP Top 10", "OWASP ASVS", "NIST SP 800-115"],
   },
   {
-    title: "Security Engineering & DevSecOps",
+    title: "Risk Assessment and Threat Analysis",
     description:
-      "Embed security into architecture and delivery pipelines to reduce exposure early and standardize secure engineering across teams.",
-    category: "Engineering",
-    icon: Wrench,
+      "Identifying, quantifying, and prioritizing risk exposure across the organization, its supply chain, and its digital environment.",
+    category: "Risk",
+    icon: Radar,
     href: "/#services",
     bullets: [
-      "Secure architecture reviews and design patterns",
-      "CI/CD security: SAST, DAST, SCA, and policy gates",
-      "Cloud and infrastructure hardening with guardrails",
+      "Enterprise cyber risk assessment and threat landscape analysis",
+      "Attack surface review and vulnerability prioritization",
+      "Third-party and supply chain risk management",
+      "Risk treatment planning and executive risk reporting",
     ],
-    standards: ["NIST SSDF", "OWASP SAMM", "SLSA"],
   },
   {
-    title: "Cybersecurity Regulatory Requirements",
+    title: "Business Continuity and Operational Resilience",
     description:
-      "Align security controls to regulatory requirements with governance that stays consistent across regions, audits, and business units.",
-    category: "Compliance",
-    icon: Gavel,
-    href: "/#services",
-    bullets: [
-      "Regulatory mapping and control harmonization",
-      "Evidence strategy and audit coordination support",
-      "Continuous compliance monitoring and reporting",
-    ],
-    standards: ["UAE: ISR (DESC)", "UAE IA (NESA)", "SVF (CBUAE)"],
-  },
-  {
-    title: "Data Privacy & Protection",
-    description:
-      "Implement privacy-by-design with strong data protection governance to reduce risk, support compliance, and improve trust with customers.",
-    category: "Privacy",
-    icon: FileLock,
-    href: "/#services",
-    bullets: [
-      "Data discovery, classification, and protection controls",
-      "Privacy risk assessments and DPIA-style workflows",
-      "Retention, access governance, and incident readiness",
-    ],
-    standards: ["ISO 27701", "GDPR", "India DPDP Act"],
-  },
-  {
-    title: "Business Continuity & Resilience",
-    description:
-      "Strengthen operational resilience through structured continuity planning, testing, and crisis execution aligned to enterprise expectations.",
+      "Building the organizational capability to withstand, respond to, and recover from disruptions - tested and validated under real conditions.",
     category: "Resilience",
     icon: Globe,
     href: "/#services",
     bullets: [
-      "BCP/DR strategy, plans, and recovery objectives",
-      "Tabletop exercises and recovery testing programs",
-      "Operational resilience governance and reporting",
+      "Business Impact Analysis and recovery objective definition",
+      "Business continuity and disaster recovery plan development",
+      "Crisis management framework and incident response planning",
+      "Continuity testing, tabletop exercises, and resilience validation",
     ],
-    standards: ["ISO 22301", "NIST SP 800-34"],
   },
   {
-    title: "Virtual CISO",
+    title: "Critical Infrastructure and OT Security",
     description:
-      "Provide executive-level security leadership to drive governance, prioritize investments, and lead programs with board-ready clarity.",
-    category: "Leadership",
-    icon: UserCog,
+      "Protecting operational technology, industrial control systems, and essential services where the impact of failure extends beyond data.",
+    category: "OT/ICS",
+    icon: Wrench,
     href: "/#services",
     bullets: [
-      "Security leadership, oversight, and program governance",
-      "Executive reporting and risk-based prioritization",
-      "Vendor, audit, and stakeholder engagement support",
+      "OT and ICS environment security assessment and architecture review",
+      "IT and OT network segmentation and control design",
+      "Threat detection, monitoring, and incident readiness for OT environments",
+      "Resilience planning for critical and essential service environments",
     ],
-    standards: ["NIST CSF 2.0", "ISO 27001", "CIS Controls"],
   },
 ];
 
@@ -153,22 +109,22 @@ function ServiceCard({ service }) {
       href={service.href}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[border-color,background-color,box-shadow,transform] duration-200 hover:border-[#26C1D3]/35 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14] sm:p-5"
+      className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[border-color,background-color,box-shadow,transform] duration-200 hover:border-[#015FC4]/35 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14] sm:p-5"
       aria-label={service.title}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.14),transparent_60%)] opacity-70" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(1,95,196,0.14),transparent_60%)] opacity-70" />
       <div className="relative flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3] sm:h-12 sm:w-12">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] transition-colors sm:h-12 sm:w-12">
             <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
           </div>
-          <div className="shrink-0 rounded-full border border-white/10 bg-[#26C1D3] px-2.5 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-black backdrop-blur sm:px-3 sm:py-1 sm:text-[8px]">
+          <div className="shrink-0 rounded-full border border-white/10 bg-[#7348C1]/70 px-2.5 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur sm:px-3 sm:py-1 sm:text-[8px]">
             {service.category}
           </div>
         </div>
 
         <div className="mt-3 flex-1 sm:mt-4">
-          <div className="text-sm font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#26C1D3] sm:text-base">
+          <div className="text-sm font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#015FC4] sm:text-base">
             {service.title}
           </div>
           <p className="mt-2 text-xs leading-relaxed text-[#94A3B8] sm:text-sm">
@@ -178,7 +134,7 @@ function ServiceCard({ service }) {
             <ul className="mt-3 space-y-1.5 text-xs text-[#A1AFC3] sm:text-sm">
               {service.bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#26C1D3]" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#015FC4]" />
                   <span className="min-w-0 break-words leading-relaxed">{bullet}</span>
                 </li>
               ))}
@@ -198,11 +154,11 @@ function ServiceCard({ service }) {
           ) : null}
         </div>
 
-        <div className="mt-4 h-px w-10 bg-[#26C1D3]/60 sm:mt-5" aria-hidden="true" />
+        <div className="mt-4 h-px w-10 bg-[#015FC4]/60 sm:mt-5" aria-hidden="true" />
       </div>
 
       <div
-        className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-linear-to-r from-transparent via-[#26C1D3]/35 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-linear-to-r from-transparent via-[#015FC4]/35 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         aria-hidden="true"
       />
     </motion.a>
@@ -249,14 +205,16 @@ export default function ServicesSection() {
       <Container className="relative z-10">
         <div className="relative">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="tm-kicker">Core Capabilities</div>
+            <div className="tm-kicker">Services</div>
             <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
-              Integrated Cybersecurity &amp; Risk Services
+              Core Services
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
-              A structured consulting model spanning governance, risk, engineering,
-              and resilience—designed for enterprise environments and regulated
-              industries.
+              Six integrated service areas for enterprise and regulated environments.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
+              Our services connect governance, risk, compliance, privacy, technical security, and resilience into one coherent program -
+              designed to work in practice, not just on paper.
             </p>
           </div>
         </div>
@@ -266,13 +224,13 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-160px" }}
-          className="mt-7 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mt-9 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
+          className="mt-7 -mx-4 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mt-9 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3"
         >
           {services.map((service) => (
             <motion.div
               key={service.title}
               variants={item}
-              className="h-full w-[85%] shrink-0 snap-start sm:w-auto sm:snap-none"
+              className="h-full w-[85%] shrink-0 snap-start self-stretch sm:w-auto sm:snap-none"
             >
               <ServiceCard service={service} />
             </motion.div>

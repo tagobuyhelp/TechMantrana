@@ -18,9 +18,9 @@ const config = {
       },
       colors: {
         brand: {
-          primary: "#0B1F3A",
-          secondary: "#143674",
-          accent: "#26C1D3",
+          primary: "#015FC4",
+          secondary: "#7348C1",
+          accent: "#CC0044",
         },
         background: "#050B14",
         surface: "#0F172A",
@@ -31,9 +31,9 @@ const config = {
         warning: "#F59E0B",
         error: "#EF4444",
         cta: {
-          DEFAULT: "#26C1D3",
-          hover: "#1EA7B8",
-          active: "#168A99",
+          DEFAULT: "#015FC4",
+          hover: "#014FAD",
+          active: "#013F8F",
           disabled: "#64748B",
         },
       },
@@ -41,7 +41,7 @@ const config = {
         "spin-slow": "spin 3s linear infinite",
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(135deg, #0B5ED7, #26C1D3)",
+        "brand-gradient": "linear-gradient(135deg, #015FC4, #7348C1)",
       },
       zIndex: {
         9999: "9999",

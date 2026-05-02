@@ -7,21 +7,21 @@ import Container from "../ui/Container";
 
 const pillars = [
   {
-    title: "Integrated Vision",
+    title: "Execution Lens",
     description:
-      "Unify cybersecurity, risk, and compliance into one execution-led capability.",
+      "Move beyond documentation to operational controls that work in practice.",
     icon: Target,
   },
   {
-    title: "Enterprise Execution",
+    title: "Integrated Programs",
     description:
-      "Translate frameworks into controls, evidence, and outcomes that stand up to scrutiny.",
+      "GRC, testing, engineering, privacy, and resilience as one unified program.",
     icon: ShieldCheck,
   },
   {
-    title: "Global Exposure",
+    title: "Resilience Focus",
     description:
-      "Delivery perspective shaped across India, the GCC, and global markets.",
+      "Harder to compromise, faster to detect, and better prepared to recover.",
     icon: Globe,
   },
 ];
@@ -31,9 +31,9 @@ function PillarCard({ item }) {
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.68)] p-4 shadow-[0_18px_60px_rgba(0,0,0,0.42)] backdrop-blur sm:p-5">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.12),transparent_60%)] opacity-70" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(1,95,196,0.12),transparent_60%)] opacity-70" />
       <div className="relative flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12">
           <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
         <div className="min-w-0">
@@ -58,14 +58,14 @@ export default function FoundersNoteSection() {
   return (
     <section
       className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
-      aria-label="Founder’s Note"
+      aria-label="Founder's Note"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -left-28 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.18),transparent_62%)] blur-2xl"
+        className="pointer-events-none absolute -left-28 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(1,95,196,0.18),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
       <Container>
@@ -76,39 +76,43 @@ export default function FoundersNoteSection() {
             whileInView="show"
             viewport={{ once: true, margin: "-160px" }}
           >
-            <div className="tm-kicker">Founder’s Note</div>
+            <div className="tm-kicker">Founder's Note</div>
             <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
-              Building Resilience Through Integrated Cybersecurity, Risk &amp; Compliance
+              The question I kept asking
             </h2>
-            <div className="mt-3 h-px w-10 bg-[#26C1D3]/60 sm:mt-4" aria-hidden="true" />
+            <div className="mt-3 h-px w-10 bg-[#015FC4]/60 sm:mt-4" aria-hidden="true" />
 
             <div className="mt-4 space-y-3 text-sm leading-relaxed text-[#A1AFC3] sm:mt-5 sm:text-base">
               <p>
-                TechMantrana was founded with a clear vision to bring cybersecurity,
-                risk, and compliance together as one integrated, execution-led
-                capability.
+                I have seen security programs that looked excellent on paper: comprehensive policies, detailed risk registers,
+                passed audits, and certifications displayed with confidence.
               </p>
               <p>
-                Across industries and regions, organizations today are overwhelmed by
-                the growing number of frameworks, regulations, and compliance
-                requirements. Managing these in isolation often leads to complexity
-                without clarity.
+                But the real question is different. What happens when a control fails? Who receives the alert? Who makes the decision?
+                How quickly can the organization respond and recover?
               </p>
               <p>
-                At TechMantrana, we address this challenge by helping organizations
-                simplify and align their security programs through a unified control
-                approach, enabling consistent governance across regulatory
-                environments.
+                Too often, the answer reveals a gap between documentation and execution.
               </p>
               <p>
-                Having worked across India, the GCC, and global markets, we believe
-                that effective cybersecurity is not just about controls — it is about
-                context, execution, and sustainability.
+                The policy exists, but the control behind it is not fully implemented. The vulnerability is identified but not remediated.
+                The audit is passed, but the organization is still not prepared for what comes next.
               </p>
               <p>
-                Our focus is to help organizations move from compliance-driven
-                security to resilience-driven transformation, building secure and
-                future-ready digital ecosystems.
+                That gap between governance and execution, between policy and practice, between documentation and defense - is what TechMantrana
+                was built to close.
+              </p>
+              <p>
+                At TechMantrana, GRC and compliance advisory are not separate from penetration testing, security engineering, business continuity,
+                data privacy, or incident readiness. They are part of the same integrated program, aligned to one objective: helping organizations become
+                harder to compromise, faster to detect threats, and better prepared to recover when something goes wrong.
+              </p>
+              <p>
+                I started TechMantrana because I believe effective cybersecurity does not require endless complexity. It requires clarity, alignment, execution,
+                and sustainability.
+              </p>
+              <p>
+                That is what we aim to build with every client.
               </p>
             </div>
           </motion.div>
@@ -139,7 +143,7 @@ export default function FoundersNoteSection() {
                 Clear governance, pragmatic execution, and audit-ready assurance —
                 delivered with enterprise discipline.
               </div>
-              <div className="mt-4 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+              <div className="mt-4 h-px w-10 bg-[#015FC4]/60" aria-hidden="true" />
               <div className="mt-3 text-sm font-semibold text-[#E5E7EB]">
                 Founder, TechMantrana
               </div>

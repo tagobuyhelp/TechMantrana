@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { openLeadForm } from "./LeadFormModal";
+
 export default function BottomCTA({ href = "/#contact" }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isNearFooter, setIsNearFooter] = useState(false);
@@ -62,7 +64,7 @@ export default function BottomCTA({ href = "/#contact" }) {
       role="region"
       aria-label="Consultation call to action"
     >
-      <div className="flex flex-col items-stretch justify-between gap-4 rounded-2xl border border-[#1E293B] bg-[#050B14]/80 p-4 shadow-[0_18px_55px_rgba(38,193,211,0.16)] backdrop-blur-xl sm:flex-row sm:items-center sm:gap-6 sm:p-5">
+      <div className="flex flex-col items-stretch justify-between gap-4 rounded-2xl border border-[#1E293B] bg-[#050B14]/80 p-4 shadow-[0_18px_55px_rgba(1,95,196,0.16)] backdrop-blur-xl sm:flex-row sm:items-center sm:gap-6 sm:p-5">
         <div className="hidden min-w-0 sm:block">
           <div className="text-sm text-[#94A3B8]">
             Build a resilient cybersecurity foundation
@@ -74,8 +76,12 @@ export default function BottomCTA({ href = "/#contact" }) {
 
         <a
           href={href}
+          onClick={(e) => {
+            e.preventDefault();
+            openLeadForm({ source: "bottom_cta" });
+          }}
           aria-label="Talk to cybersecurity experts"
-          className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-6 py-3 text-sm font-semibold text-[#050B14] shadow-[0_16px_40px_rgba(38,193,211,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:scale-[1.03] hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:scale-[0.99] sm:w-auto"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-[#015FC4] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(1,95,196,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:scale-[1.03] hover:bg-[#014FAD] hover:shadow-[0_22px_60px_rgba(1,95,196,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:scale-[0.99] sm:w-auto"
         >
           Talk to Experts →
         </a>

@@ -22,17 +22,19 @@ const pillars = [
 
 function PillarCard({ item }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-5">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(38,193,211,0.12),transparent_60%)] opacity-55" />
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3.5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-4">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(1,95,196,0.12),transparent_60%)] opacity-55" />
       <div className="relative">
         <div className="text-base font-semibold tracking-tight text-[#F8FAFC]">
           {item.title}
         </div>
-        <p className="mt-2 text-sm leading-relaxed text-[#A1AFC3]">
+        <p className="mt-2 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
           {item.description}
         </p>
       </div>
-      <div className="relative mt-4 h-px w-10 bg-[#26C1D3]/60" aria-hidden="true" />
+      <div className="relative mt-auto pt-3.5" aria-hidden="true">
+        <div className="h-px w-10 bg-[#015FC4]/60" />
+      </div>
     </div>
   );
 }
@@ -54,7 +56,7 @@ export default function InfoSecuritySection() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-28 top-12 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.18),transparent_62%)] blur-2xl"
+        className="pointer-events-none absolute -right-28 top-12 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(1,95,196,0.18),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
 
@@ -66,12 +68,12 @@ export default function InfoSecuritySection() {
           viewport={{ once: true, margin: "-160px" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="tm-kicker">Information Security &amp; Data Privacy</div>
+          <div className="tm-kicker">Certification</div>
           <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
-            Built on Enterprise-Grade Security Governance
+            Information Security Statement
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
-            Our delivery is anchored in security-by-design and privacy-first principles, with clear controls and audit-ready evidence across programs.
+            ISO/IEC 27001:2022 Certified. Our delivery is anchored in confidentiality, integrity, and availability—supported by clear controls and audit-ready evidence.
           </p>
         </motion.div>
 
@@ -86,23 +88,32 @@ export default function InfoSecuritySection() {
           className="mt-7 grid gap-4 sm:mt-9 sm:gap-6 lg:grid-cols-12"
         >
           <motion.div variants={fadeUp} className="lg:col-span-5">
-            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-5">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(620px_circle_at_18%_0%,rgba(38,193,211,0.14),transparent_60%)] opacity-60" />
+            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3.5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-4">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(620px_circle_at_18%_0%,rgba(1,95,196,0.14),transparent_60%)] opacity-60" />
               <div className="relative flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12">
                   <BadgeCheck className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
                   <div className="text-sm font-semibold text-[#F8FAFC]">
                     ISO/IEC 27001:2022 Certified
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-[#A1AFC3]">
-                    Our information security management approach is governed by structured controls, risk treatment, and continual improvement—supporting enterprise compliance credibility.
-                  </p>
+                  <div className="mt-2 space-y-1.5 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
+                    <p>
+                      TechMantrana is committed to protecting the confidentiality, integrity, and availability of information across our operations and client engagements.
+                    </p>
+                    <p>
+                      We maintain a certified Information Security Management System (ISMS) in accordance with ISO/IEC 27001:2022, supported by risk-based controls, defined
+                      information security policies, and a program of continual improvement.
+                    </p>
+                    <p>
+                      Our ISMS has been independently verified and certified by an accredited certification body. Certificate details are available on request.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="relative mt-4 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+              <div className="relative mt-3.5 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
+                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
                   <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                 </span>
                 CIA-aligned controls across delivery

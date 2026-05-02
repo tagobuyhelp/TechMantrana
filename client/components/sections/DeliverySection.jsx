@@ -4,11 +4,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   BadgeCheck,
-  BookOpen,
   ArrowRight,
+  Eye,
   Globe2,
   Landmark,
+  LayoutGrid,
   MapPin,
+  RefreshCcw,
   Shield,
   Wrench,
 } from "lucide-react";
@@ -16,35 +18,43 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Container from "../ui/Container";
+import { openLeadForm } from "../ui/LeadFormModal";
 
 const steps = [
   {
     number: "01",
-    title: "Advisory",
+    title: "Understand",
     description:
-      "Define objectives, assess risk, and map requirements into a practical control plan aligned to your business and regulators.",
-    icon: Shield,
+      "Assess current security posture, identify gaps between documented controls and operational reality, and understand the regulatory and business context.",
+    icon: Eye,
   },
   {
     number: "02",
-    title: "Implementation",
+    title: "Design and Align",
     description:
-      "Operationalize controls through secure architecture, engineering, and rollout across teams, tools, and environments.",
-    icon: Wrench,
+      "Design the program with the organization's risk profile, regulatory environment, and operational constraints in mind. Build stakeholder alignment from the start.",
+    icon: LayoutGrid,
   },
   {
     number: "03",
-    title: "Assurance",
+    title: "Implement and Embed",
     description:
-      "Validate effectiveness with testing and evidence, close gaps, and deliver audit-ready outcomes with measurable assurance.",
-    icon: BadgeCheck,
+      "Implement controls, operationalize frameworks, and embed security into processes. This is where the gap between policy and practice is closed.",
+    icon: Wrench,
   },
   {
     number: "04",
-    title: "Training",
+    title: "Test and Validate",
     description:
-      "Enable teams with role-based training, playbooks, and exercises to sustain adoption and improve operational readiness.",
-    icon: BookOpen,
+      "Validate through penetration testing, ISMS internal audits, continuity exercises, and control effectiveness testing. Findings are remediated, not filed.",
+    icon: BadgeCheck,
+  },
+  {
+    number: "05",
+    title: "Sustain and Improve",
+    description:
+      "Maintain the program through ongoing GRC oversight, regulatory horizon scanning, virtual CISO services, periodic assessments, and training. Continual improvement as a discipline.",
+    icon: RefreshCcw,
   },
 ];
 
@@ -55,10 +65,10 @@ const regionalAlignment = [
     subtitle: "Security, privacy, and incident expectations",
     icon: Landmark,
     accent: {
-      text: "text-[#26C1D3]",
-      dot: "bg-[#26C1D3]",
-      glow: "from-[#26C1D3]/16",
-      line: "via-[#26C1D3]/55",
+      text: "text-[#015FC4]",
+      dot: "bg-[#015FC4]",
+      glow: "from-[#015FC4]/16",
+      line: "via-[#015FC4]/55",
     },
     items: [
       "DPDP Act",
@@ -73,10 +83,10 @@ const regionalAlignment = [
     subtitle: "Government and financial sector alignment",
     icon: MapPin,
     accent: {
-      text: "text-[#A78BFA]",
-      dot: "bg-[#A78BFA]",
-      glow: "from-[#A78BFA]/14",
-      line: "via-[#A78BFA]/50",
+      text: "text-[#7348C1]",
+      dot: "bg-[#7348C1]",
+      glow: "from-[#7348C1]/14",
+      line: "via-[#7348C1]/50",
     },
     items: ["UAE: ISR (DESC)", "UAE IA (NESA)", "SVF (CBUAE)"],
   },
@@ -86,16 +96,18 @@ const regionalAlignment = [
     subtitle: "Operational resilience and cyber directives",
     icon: Globe2,
     accent: {
-      text: "text-[#34D399]",
-      dot: "bg-[#34D399]",
-      glow: "from-[#34D399]/12",
-      line: "via-[#34D399]/45",
+      text: "text-[#CC0044]",
+      dot: "bg-[#CC0044]",
+      glow: "from-[#CC0044]/12",
+      line: "via-[#CC0044]/45",
     },
     items: ["GDPR", "NIS2 Directive", "DORA", "ISO/IEC 27001 alignment"],
   },
 ];
 
 function Timeline({ steps, item }) {
+  const positions = steps.length === 5 ? [100, 300, 500, 700, 900] : [125, 375, 625, 875];
+
   return (
     <div className="relative hidden lg:block">
       <div
@@ -103,7 +115,7 @@ function Timeline({ steps, item }) {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(38,193,211,0.12), transparent 62%), radial-gradient(closest-side, rgba(148,163,184,0.08), transparent 70%)",
+            "radial-gradient(closest-side, rgba(1,95,196,0.12), transparent 62%), radial-gradient(closest-side, rgba(148,163,184,0.08), transparent 70%)",
         }}
       />
       <div className="pointer-events-none absolute left-1/2 top-7 h-44 w-44 -translate-x-1/2 rounded-full border border-white/10 opacity-80" />
@@ -119,8 +131,8 @@ function Timeline({ steps, item }) {
         <defs>
           <linearGradient id="tmLine" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0%" stopColor="rgba(148,163,184,0.05)" />
-            <stop offset="35%" stopColor="rgba(38,193,211,0.18)" />
-            <stop offset="65%" stopColor="rgba(38,193,211,0.18)" />
+            <stop offset="35%" stopColor="rgba(1,95,196,0.18)" />
+            <stop offset="65%" stopColor="rgba(1,95,196,0.18)" />
             <stop offset="100%" stopColor="rgba(148,163,184,0.05)" />
           </linearGradient>
           <marker
@@ -132,37 +144,32 @@ function Timeline({ steps, item }) {
             markerHeight="6"
             orient="auto-start-reverse"
           >
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(38,193,211,0.55)" />
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(1,95,196,0.55)" />
           </marker>
         </defs>
 
-        <path
-          d="M125 48 L375 48"
-          stroke="url(#tmLine)"
-          strokeWidth="2"
-          strokeDasharray="2 10"
-          fill="none"
-          markerEnd="url(#tmArrow)"
-        />
-        <path
-          d="M375 48 L625 48"
-          stroke="url(#tmLine)"
-          strokeWidth="2"
-          strokeDasharray="2 10"
-          fill="none"
-          markerEnd="url(#tmArrow)"
-        />
-        <path
-          d="M625 48 L875 48"
-          stroke="url(#tmLine)"
-          strokeWidth="2"
-          strokeDasharray="2 10"
-          fill="none"
-          markerEnd="url(#tmArrow)"
-        />
+        {positions.slice(0, -1).map((from, idx) => {
+          const to = positions[idx + 1];
+          return (
+            <path
+              key={`tm-line-${from}-${to}`}
+              d={`M${from} 48 L${to} 48`}
+              stroke="url(#tmLine)"
+              strokeWidth="2"
+              strokeDasharray="2 10"
+              fill="none"
+              markerEnd="url(#tmArrow)"
+            />
+          );
+        })}
       </svg>
 
-      <div className="relative grid grid-cols-4">
+      <div
+        className={[
+          "relative grid",
+          steps.length === 5 ? "grid-cols-5" : "grid-cols-4",
+        ].join(" ")}
+      >
         {steps.map((step) => {
           const Icon = step.icon;
 
@@ -177,14 +184,14 @@ function Timeline({ steps, item }) {
                   className="absolute inset-0 rounded-full opacity-90"
                   style={{
                     background:
-                      "radial-gradient(circle at 50% 35%, rgba(38,193,211,0.22), transparent 62%)",
+                      "radial-gradient(circle at 50% 35%, rgba(1,95,196,0.22), transparent 62%)",
                   }}
                 />
-                <Icon className="relative h-6 w-6 text-[#26C1D3]" aria-hidden="true" />
+                <Icon className="relative h-6 w-6 text-[#015FC4]" aria-hidden="true" />
               </div>
               <div className="mt-4 flex flex-col items-center">
                 <div className="h-10 w-px bg-white/10" />
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#26C1D3]/85 shadow-[0_0_0_6px_rgba(38,193,211,0.12)]" />
+                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#015FC4]/85 shadow-[0_0_0_6px_rgba(1,95,196,0.12)]" />
               </div>
             </motion.div>
           );
@@ -204,15 +211,15 @@ function StepCard({ step }) {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(700px circle at 15% 0%, rgba(38,193,211,0.12), transparent 55%), radial-gradient(500px circle at 85% 10%, rgba(148,163,184,0.06), transparent 62%)",
+            "radial-gradient(700px circle at 15% 0%, rgba(1,95,196,0.12), transparent 55%), radial-gradient(500px circle at 85% 10%, rgba(148,163,184,0.06), transparent 62%)",
         }}
       />
 
       <div className="relative flex items-start justify-between gap-6">
-        <div className="text-xl font-semibold tracking-tight text-[#26C1D3] sm:text-2xl">
+        <div className="text-xl font-semibold tracking-tight text-[#015FC4] sm:text-2xl">
           {step.number}
         </div>
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] sm:h-12 sm:w-12">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12">
           <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
       </div>
@@ -221,7 +228,7 @@ function StepCard({ step }) {
         <div className="text-base font-semibold text-[#E5E7EB] sm:text-lg">
           {step.title}
         </div>
-        <div className="mt-2 h-px w-10 bg-[#26C1D3]/70" />
+        <div className="mt-2 h-px w-10 bg-[#015FC4]/70" />
         <p className="mt-3 text-xs leading-relaxed text-[#94A3B8] sm:text-sm">
           {step.description}
         </p>
@@ -249,7 +256,7 @@ function RegionAlignmentCard({ region, activeRegion, onActivate }) {
         className="pointer-events-none absolute inset-0 opacity-70"
         aria-hidden="true"
         style={{
-          background: `radial-gradient(700px circle at 18% 0%, rgba(38,193,211,0.08), transparent 58%), radial-gradient(520px circle at 84% 8%, rgba(148,163,184,0.06), transparent 60%)`,
+          background: `radial-gradient(700px circle at 18% 0%, rgba(1,95,196,0.08), transparent 58%), radial-gradient(520px circle at 84% 8%, rgba(148,163,184,0.06), transparent 60%)`,
         }}
       />
       <div
@@ -291,8 +298,7 @@ function RegionAlignmentCard({ region, activeRegion, onActivate }) {
         </div>
         <div
           className={[
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12",
-            accent.text,
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12",
           ].join(" ")}
         >
           <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
@@ -356,7 +362,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(760px circle at 18% 0%, rgba(38,193,211,0.14), transparent 58%), radial-gradient(520px circle at 86% 14%, rgba(148,163,184,0.08), transparent 60%)",
+            "radial-gradient(760px circle at 18% 0%, rgba(1,95,196,0.14), transparent 58%), radial-gradient(520px circle at 86% 14%, rgba(148,163,184,0.08), transparent 60%)",
         }}
       />
 
@@ -369,7 +375,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
             India • GCC • Europe alignment
           </div>
         </div>
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#26C1D3] shadow-[0_10px_26px_rgba(0,0,0,0.25)] sm:h-12 sm:w-12">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12">
           <Globe2 className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
       </div>
@@ -384,7 +390,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
         >
           <defs>
             <linearGradient id="tmGlobeStroke" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stopColor="rgba(38,193,211,0.55)" />
+              <stop offset="0%" stopColor="rgba(1,95,196,0.55)" />
               <stop offset="100%" stopColor="rgba(148,163,184,0.25)" />
             </linearGradient>
           </defs>
@@ -402,7 +408,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
                 ? `M${europe.x} ${europe.y} C ${europe.x + 12} ${europe.y + 10}, ${gcc.x - 18} ${gcc.y - 8}, ${gcc.x} ${gcc.y}`
                 : ""
             }
-            stroke="rgba(167,139,250,0.42)"
+            stroke="rgba(115,72,193,0.42)"
             strokeWidth="1.2"
             strokeDasharray="3 5"
             opacity={
@@ -417,7 +423,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
                 ? `M${gcc.x} ${gcc.y} C ${gcc.x + 16} ${gcc.y + 10}, ${india.x - 10} ${india.y - 6}, ${india.x} ${india.y}`
                 : ""
             }
-            stroke="rgba(38,193,211,0.42)"
+            stroke="rgba(1,95,196,0.42)"
             strokeWidth="1.2"
             strokeDasharray="3 5"
             opacity={
@@ -497,7 +503,7 @@ export default function DeliverySection() {
 
   return (
     <section
-      id="regions"
+      id="delivery"
       className="tm-section tm-section--image relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -515,13 +521,16 @@ export default function DeliverySection() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="tm-kicker">Delivery Model</div>
           <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
-            Structured Execution from Strategy to Resilience
+            How we work - from understanding to sustained resilience.
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
-            A phase-wise delivery model: Advisory → Implementation → Assurance →
-            Training. Each phase produces clear outcomes and evidence, keeping
-            programs audit-ready and execution-led.
-          </p>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
+            <p>
+              We do not deliver reports and disengage. Every engagement is designed to move an organization from where it is to where it needs to be - and keep it there.
+            </p>
+            <p>
+              Every engagement is different. The phase where most organizations need us most varies. We meet organizations where they are and build from there.
+            </p>
+          </div>
         </div>
 
         <motion.div
@@ -533,7 +542,12 @@ export default function DeliverySection() {
         >
           <Timeline steps={steps} item={item} />
 
-          <div className="mt-5 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-7 lg:grid-cols-4">
+          <div
+            className={[
+              "mt-5 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-7",
+              steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4",
+            ].join(" ")}
+          >
             {steps.map((step) => (
               <motion.div key={step.title} variants={item} className="h-full">
                 <StepCard step={step} />
@@ -541,7 +555,7 @@ export default function DeliverySection() {
             ))}
           </div>
 
-          <div className="mt-9 sm:mt-10">
+          <div id="regions" className="mt-9 sm:mt-10">
             <div className="mx-auto max-w-3xl text-center">
               <div className="tm-kicker">Regional Regulatory Alignment</div>
               <h3 className="mt-3 font-heading text-xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-2xl">
@@ -549,9 +563,9 @@ export default function DeliverySection() {
               </h3>
               <div className="mt-3 text-sm font-semibold leading-relaxed text-[#E5E7EB]/85 sm:text-base">
                 Built for enterprises operating across{" "}
-                <span className="text-[#26C1D3]">India</span>,{" "}
-                <span className="text-[#A78BFA]">GCC</span>, and{" "}
-                <span className="text-[#34D399]">Europe</span>—mapped into a unified control approach with audit-ready evidence.
+                <span className="text-[#015FC4]">India</span>,{" "}
+                <span className="text-[#7348C1]">GCC</span>, and{" "}
+                <span className="text-[#CC0044]">Europe</span>—mapped into a unified control approach with audit-ready evidence.
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
                 Regulations grouped by region for fast scanning and clear delivery alignment.
@@ -582,7 +596,11 @@ export default function DeliverySection() {
             <div className="mt-8 flex justify-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-[#050B14] shadow-[0_18px_40px_rgba(38,193,211,0.16)] transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.03] hover:bg-[#1EA7B8] hover:shadow-[0_24px_60px_rgba(38,193,211,0.22)] active:scale-[0.99] active:bg-[#168A99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openLeadForm({ source: "delivery_alignment_cta", service: "Regulatory Compliance and Privacy" });
+                }}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#015FC4] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(1,95,196,0.16)] transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.03] hover:bg-[#014FAD] hover:shadow-[0_24px_60px_rgba(1,95,196,0.22)] active:scale-[0.99] active:bg-[#013F8F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
               >
                 Explore Regulatory Alignment <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>

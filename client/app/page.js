@@ -9,6 +9,7 @@ import HeroSection from "../components/sections/HeroSection";
 import InfoSecuritySection from "../components/sections/InfoSecuritySection";
 import ProblemSection from "../components/sections/ProblemSection";
 import ServicesSection from "../components/sections/ServicesSection";
+import TrainingSection from "../components/sections/TrainingSection";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
         <HeroSection />
         <ProblemSection />
         <ServicesSection />
+        <TrainingSection />
         <AboutSection />
         <InfoSecuritySection />
         <FoundersNoteSection />

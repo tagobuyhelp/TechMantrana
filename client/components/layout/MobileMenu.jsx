@@ -4,7 +4,8 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
+import { BookOpen, Layers, Mail, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
+import { openLeadForm } from "../ui/LeadFormModal";
 
 function ChevronIcon({ className }) {
   return (
@@ -90,6 +91,8 @@ export default function MobileMenu({
     () => ({
       about: UserRound,
       services: ShieldCheck,
+      training: BookOpen,
+      delivery: Layers,
       regions: MapPin,
       contact: Mail,
     }),
@@ -229,7 +232,7 @@ export default function MobileMenu({
             <Link
               href="/"
               onClick={closeMenu}
-              className="inline-flex items-center rounded-xl p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+              className="inline-flex items-center rounded-xl p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
               aria-label="TechMantrana home"
             >
               <Image
@@ -245,7 +248,7 @@ export default function MobileMenu({
               ref={closeBtnRef}
               type="button"
               onClick={closeMenu}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
               aria-label="Close menu"
             >
               <XIcon className="h-5 w-5" />
@@ -263,15 +266,15 @@ export default function MobileMenu({
                       key={l.href}
                       href={l.href}
                       onClick={closeMenu}
-                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-base font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:text-lg"
+                      className="group flex min-h-12 items-center justify-between rounded-2xl border border-white/10 bg-[#111827]/35 px-4 py-3 text-base font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:translate-x-0.5 hover:border-[#015FC4]/25 hover:bg-[#111827]/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 sm:text-lg"
                     >
                       <span className="flex min-w-0 items-center gap-3">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-9 sm:w-9">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)] sm:h-9 sm:w-9">
                           {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
                         </span>
                         <span className="truncate">{l.label}</span>
                       </span>
-                      <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      <span className="text-[#015FC4] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                         →
                       </span>
                     </Link>
@@ -281,9 +284,9 @@ export default function MobileMenu({
               {servicesLink || hasServices ? (
                 <div className="rounded-2xl border border-white/10 bg-[#111827]/35">
                   <details className="group">
-                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 py-3 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:text-lg">
+                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 py-3 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 sm:text-lg">
                       <span className="flex min-w-0 items-center gap-3">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3] sm:h-9 sm:w-9">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)] sm:h-9 sm:w-9">
                           <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                         </span>
                         <span className="truncate">{servicesLink?.label || "Services"}</span>
@@ -298,17 +301,17 @@ export default function MobileMenu({
                               key={svc.title}
                               href={svc.href}
                               onClick={closeMenu}
-                              className="group flex min-h-12 items-center justify-between rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] transition-[transform,background-color,border-color,color] duration-200 hover:translate-x-0.5 hover:border-[#26C1D3]/25 hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                              className="group flex min-h-12 items-center justify-between rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] transition-[transform,background-color,border-color,color] duration-200 hover:translate-x-0.5 hover:border-[#015FC4]/25 hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
                             >
                               <span className="flex min-w-0 flex-1 items-center gap-3">
-                                <span className="flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#26C1D3] sm:h-8 sm:w-8">
+                                <span className="flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#015FC4] text-white shadow-[0_10px_26px_rgba(1,95,196,0.18)] sm:h-8 sm:w-8">
                                   {svc.icon ? (
                                     <svc.icon className="h-4 w-4" aria-hidden="true" />
                                   ) : null}
                                 </span>
                                 <span className="truncate">{svc.title}</span>
                               </span>
-                              <span className="text-[#26C1D3] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                              <span className="text-[#015FC4] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                                 →
                               </span>
                             </Link>
@@ -317,10 +320,10 @@ export default function MobileMenu({
                           <Link
                             href="/#services"
                             onClick={closeMenu}
-                            className="flex min-h-12 items-center rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                            className="flex min-h-12 items-center rounded-xl border border-white/10 bg-[#111827]/45 px-4 py-3 text-sm font-medium text-[#A1AFC3] hover:bg-[#111827]/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
                           >
                             <span className="flex min-w-0 items-center gap-3">
-                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#26C1D3]">
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
                                 <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                               </span>
                               <span className="truncate">View Services →</span>
@@ -339,9 +342,13 @@ export default function MobileMenu({
             <div className="flex flex-col gap-3">
               <Link
                 href="/#contact"
-                onClick={closeMenu}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openLeadForm({ source: "mobile_menu_talk" });
+                  closeMenu();
+                }}
                 aria-label="Talk to Experts"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-3 text-sm font-semibold text-black shadow-[0_16px_40px_rgba(38,193,211,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#015FC4] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(1,95,196,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[#014FAD] hover:shadow-[0_22px_60px_rgba(1,95,196,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
               >
                 Talk to Experts →
               </Link>
@@ -349,16 +356,20 @@ export default function MobileMenu({
                 href="tel:+919903142550"
                 onClick={closeMenu}
                 aria-label="Call +91 9903142550"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
               >
-                <Phone className="h-4 w-4 text-[#26C1D3]" aria-hidden="true" />
+                <Phone className="h-4 w-4 text-[#015FC4]" aria-hidden="true" />
                 +91 9903142550
               </a>
               <Link
                 href="/#contact"
-                onClick={closeMenu}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openLeadForm({ source: "mobile_menu_assessment", service: "General Inquiry" });
+                  closeMenu();
+                }}
                 aria-label="Request Assessment"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
               >
                 Request Assessment
               </Link>

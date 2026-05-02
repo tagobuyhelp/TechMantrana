@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import Button from "../ui/Button";
 import Container from "../ui/Container";
+import { openLeadForm } from "../ui/LeadFormModal";
 
 function InputField({
   id,
@@ -22,7 +23,7 @@ function InputField({
   className = "",
 }) {
   const base =
-    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-3 py-2 text-[13px] text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:px-4 sm:text-sm";
+    "mt-1 w-full rounded-xl border border-[#1E293B] bg-[#050B14] px-3 py-2 text-[13px] text-[#E5E7EB] placeholder:text-[#94A3B8]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 sm:px-4 sm:text-sm";
 
   if (options && !textarea) {
     return (
@@ -40,7 +41,7 @@ function InputField({
             className={[
               base,
               "appearance-none pr-10",
-              error ? "border-[#26C1D3]/60" : "",
+              error ? "border-[#015FC4]/60" : "",
             ].join(" ")}
           >
             <option value="" disabled>
@@ -91,7 +92,7 @@ function InputField({
           onChange={onChange}
           placeholder={placeholder}
           rows={2}
-          className={[base, error ? "border-[#26C1D3]/60" : ""].join(" ")}
+          className={[base, error ? "border-[#015FC4]/60" : ""].join(" ")}
         />
       ) : (
         <input
@@ -101,7 +102,7 @@ function InputField({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={[base, error ? "border-[#26C1D3]/60" : ""].join(" ")}
+          className={[base, error ? "border-[#015FC4]/60" : ""].join(" ")}
         />
       )}
       {error ? (
@@ -114,7 +115,7 @@ function InputField({
 function TrustRowItem({ icon: Icon, children }) {
   return (
     <div className="inline-flex min-w-0 items-center gap-1.5 text-xs text-[#94A3B8] sm:gap-2 sm:text-sm">
-      <Icon className="h-3.5 w-3.5 text-[#26C1D3] sm:h-4 sm:w-4" aria-hidden="true" />
+      <Icon className="h-3.5 w-3.5 text-[#015FC4] sm:h-4 sm:w-4" aria-hidden="true" />
       <span className="min-w-0 wrap-break-word">{children}</span>
     </div>
   );
@@ -227,7 +228,7 @@ export default function CTASection() {
               />
               <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/70 via-[#050B14]/55 to-[#050B14]/86" />
             </div>
-            <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(38,193,211,0.16),transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(900px_circle_at_15%_30%,rgba(1,95,196,0.16),transparent_55%)]" />
             <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]" />
 
             <div className="relative z-10 grid gap-4 sm:gap-6 lg:grid-cols-2 lg:items-start">
@@ -250,14 +251,18 @@ export default function CTASection() {
 
                 <div className="mt-3 flex flex-col items-stretch justify-center gap-2.5 sm:mt-6 sm:gap-3 sm:flex-row sm:items-center lg:justify-start">
                   <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
-                    <Button onClick={() => {}} aria-label="Talk to Experts">
+                    <Button onClick={() => openLeadForm({ source: "contact_section_talk" })} aria-label="Talk to Experts">
                       <span className="inline-flex items-center gap-2">
                         Talk to Experts <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </span>
                     </Button>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.99 }}>
-                    <Button variant="secondary" onClick={() => {}} aria-label="Request Assessment">
+                    <Button
+                      variant="secondary"
+                      onClick={() => openLeadForm({ source: "contact_section_assessment", service: "General Inquiry" })}
+                      aria-label="Request Assessment"
+                    >
                       <span className="inline-flex items-center gap-2">
                         Request Assessment{" "}
                         <ClipboardList className="h-4 w-4" aria-hidden="true" />
@@ -272,12 +277,12 @@ export default function CTASection() {
                   <TrustRowItem icon={Timer}>Response within 24 hours</TrustRowItem>
                 </div>
                 <div className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-[#E5E7EB]/80 lg:justify-start">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#26C1D3]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
                     <Phone className="h-4 w-4" aria-hidden="true" />
                   </span>
                   <a
                     href="tel:+919903142550"
-                    className="text-[#26C1D3] transition-colors hover:text-[#1EA7B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60"
+                    className="text-[#015FC4] transition-colors hover:text-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
                   >
                     +91 9903142550
                   </a>
@@ -327,15 +332,13 @@ export default function CTASection() {
                     onChange={onChange("service")}
                     placeholder="Select a service"
                     options={[
-                      { value: "grc", label: "GRC & Compliance Advisory" },
-                      { value: "cyber", label: "Cybersecurity Consulting" },
-                      { value: "risk", label: "Risk Assessment & Threat Analysis" },
-                      { value: "vapt", label: "VAPT & Security Testing" },
-                      { value: "devsecops", label: "Security Engineering & DevSecOps" },
-                      { value: "regulatory", label: "Cybersecurity Regulatory Requirements" },
+                      { value: "grc", label: "Governance, Risk & Compliance" },
+                      { value: "assurance", label: "Security Testing & Assurance" },
+                      { value: "engineering", label: "Security Engineering & DevSecOps" },
                       { value: "privacy", label: "Data Privacy & Protection" },
                       { value: "resilience", label: "Business Continuity & Resilience" },
-                      { value: "vciso", label: "Virtual CISO" },
+                      { value: "leadership", label: "Virtual CISO & Security Leadership" },
+                      { value: "training", label: "Cybersecurity Training Programs" },
                       { value: "not_sure", label: "Not sure (recommend)" },
                     ]}
                   />
@@ -357,7 +360,7 @@ export default function CTASection() {
                     <button
                       type="submit"
                       disabled={!canSubmit || submitState === "submitting"}
-                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#26C1D3] px-5 py-2.5 text-sm font-semibold text-[#050B14] transition-colors hover:bg-[#1EA7B8] active:bg-[#168A99] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 sm:py-3"
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-[#015FC4] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#014FAD] active:bg-[#013F8F] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 sm:py-3"
                       aria-disabled={!canSubmit || submitState === "submitting"}
                     >
                       <span className="inline-flex items-center gap-2">
@@ -372,7 +375,7 @@ export default function CTASection() {
                       className={[
                         "rounded-xl border px-3.5 py-2.5 text-xs sm:col-span-2 sm:px-4 sm:py-3",
                         submitState === "success"
-                          ? "border-[#26C1D3]/25 bg-[#0F172A]/55 text-[#E5E7EB]/85"
+                          ? "border-[#015FC4]/25 bg-[#0F172A]/55 text-[#E5E7EB]/85"
                           : "border-white/10 bg-[#0F172A]/35 text-[#94A3B8]",
                       ].join(" ")}
                       role={submitState === "error" ? "alert" : "status"}

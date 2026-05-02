@@ -2,7 +2,7 @@
 
 const variants = {
   primary:
-    "bg-[#26C1D3] text-[#050B14] hover:bg-[#1EA7B8] active:bg-[#168A99]",
+    "bg-[#015FC4] text-white hover:bg-[#014FAD] active:bg-[#013F8F]",
   secondary:
     "border border-[#1E293B] bg-transparent text-[#E5E7EB] hover:bg-white/5",
   ghost:
@@ -22,7 +22,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       className={[
-        "inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14] disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050B14] disabled:pointer-events-none disabled:opacity-50",
         variants[variant] ?? variants.primary,
         className,
       ].join(" ")}

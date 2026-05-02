@@ -40,11 +40,11 @@ function ProblemCard({ item }) {
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[box-shadow,background-color,border-color,transform] duration-200 hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] sm:p-5"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[box-shadow,background-color,border-color,transform] duration-200 hover:border-[#015FC4]/25 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)] sm:p-5"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_20%_10%,rgba(38,193,211,0.14),transparent_62%)] opacity-60" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(420px_circle_at_20%_10%,rgba(1,95,196,0.14),transparent_62%)] opacity-60" />
       <div className="relative flex flex-1 flex-col">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#94A3B8] shadow-[0_10px_26px_rgba(0,0,0,0.25)] transition-colors group-hover:text-[#26C1D3] sm:h-12 sm:w-12">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] transition-colors sm:h-12 sm:w-12">
           <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
 
@@ -57,11 +57,11 @@ function ProblemCard({ item }) {
           </p>
         </div>
 
-        <div className="mt-4 h-px w-10 bg-[#26C1D3]/60 sm:mt-5" aria-hidden="true" />
+        <div className="mt-4 h-px w-10 bg-[#015FC4]/60 sm:mt-5" aria-hidden="true" />
       </div>
 
       <div
-        className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-linear-to-r from-transparent via-[#26C1D3]/35 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-linear-to-r from-transparent via-[#015FC4]/35 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         aria-hidden="true"
       />
     </motion.div>
@@ -93,7 +93,7 @@ export default function ProblemSection() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-24 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(38,193,211,0.25),transparent_62%)] blur-2xl"
+        className="pointer-events-none absolute -right-24 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(1,95,196,0.25),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
       <Container className="relative z-10">
@@ -105,14 +105,14 @@ export default function ProblemSection() {
             viewport={{ once: true, margin: "-160px" }}
             className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-none lg:text-left"
           >
-            <div className="tm-kicker">Challenges</div>
+            <div className="tm-kicker">The Fragmentation Problem</div>
             <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
-              Managing Cybersecurity Across Multiple Regulations Is Complex
+              Most Organizations Don’t Have a Cybersecurity Problem Alone
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
-              Most organizations operate across fragmented systems and overlapping
-              frameworks—without a unified control model to connect security,
-              compliance, and risk.
+              They have a fragmentation problem. Governance sits with one team, risk with another,
+              compliance with a third, and privacy somewhere in between. Frameworks are addressed in silos,
+              audits are treated as one-time events, and regulatory requirements are often managed in isolation.
             </p>
           </motion.div>
 

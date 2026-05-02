@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { openLeadForm } from "./LeadFormModal";
 
 function PhoneIcon({ className, ...props }) {
   return (
@@ -78,6 +79,26 @@ function ArrowUpIcon({ className, ...props }) {
   );
 }
 
+function DotsIcon({ className, ...props }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M5 12h.01" />
+      <path d="M12 12h.01" />
+      <path d="M19 12h.01" />
+    </svg>
+  );
+}
+
 export default function MultiCTA({
   phoneHref = "tel:+919903142550",
   whatsappHref = "https://wa.me/919903142550",
@@ -86,18 +107,27 @@ export default function MultiCTA({
   const [isVisible, setIsVisible] = useState(false);
   const [isNearFooter, setIsNearFooter] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement?.dataset?.tmMenuOpen === "1";
+  });
+  const isMountedRef = useRef(false);
   const isVisibleRef = useRef(false);
   const rafIdRef = useRef(null);
   const rootRef = useRef(null);
 
   useEffect(() => {
-    const getInitial = () =>
-      typeof document !== "undefined" &&
-      document.documentElement?.dataset?.tmMenuOpen === "1";
-    setIsMenuOpen(getInitial());
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
-    const onMenu = (e) => setIsMenuOpen(Boolean(e?.detail?.open));
+  useEffect(() => {
+    const onMenu = (e) => {
+      if (!isMountedRef.current) return;
+      setIsMenuOpen(Boolean(e?.detail?.open));
+    };
     window.addEventListener("tm:menu", onMenu);
     return () => window.removeEventListener("tm:menu", onMenu);
   }, []);
@@ -108,9 +138,9 @@ export default function MultiCTA({
       const next = window.scrollY > 300;
       if (next !== isVisibleRef.current) {
         isVisibleRef.current = next;
-        setIsVisible(next);
+        if (isMountedRef.current) setIsVisible(next);
       }
-      if (!next) setIsExpanded(false);
+      if (!next && isMountedRef.current) setIsExpanded(false);
     };
 
     const onScroll = () => {
@@ -135,7 +165,10 @@ export default function MultiCTA({
     if (!footer || typeof IntersectionObserver === "undefined") return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsNearFooter(entry.isIntersecting),
+      ([entry]) => {
+        if (!isMountedRef.current) return;
+        setIsNearFooter(entry.isIntersecting);
+      },
       { root: null, threshold: 0, rootMargin: "0px 0px 240px 0px" }
     );
 
@@ -150,11 +183,11 @@ export default function MultiCTA({
       const root = rootRef.current;
       if (!root) return;
       if (root.contains(event.target)) return;
-      setIsExpanded(false);
+      if (isMountedRef.current) setIsExpanded(false);
     };
 
     const onKeyDown = (event) => {
-      if (event.key === "Escape") setIsExpanded(false);
+      if (event.key === "Escape" && isMountedRef.current) setIsExpanded(false);
     };
 
     window.addEventListener("pointerdown", onPointerDown);
@@ -216,7 +249,7 @@ export default function MultiCTA({
       role="region"
       aria-label="Consultation call to action"
     >
-      <div className="rounded-2xl border border-[#1E293B] bg-[#050B14]/80 shadow-[0_18px_55px_rgba(38,193,211,0.16)] backdrop-blur-xl">
+      <div className="rounded-2xl border border-[#1E293B] bg-[#050B14]/80 shadow-[0_18px_55px_rgba(1,95,196,0.16)] backdrop-blur-xl">
         <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:p-4">
           <div className="hidden min-w-0 sm:block">
             <div className="text-sm text-[#94A3B8]">
@@ -232,23 +265,27 @@ export default function MultiCTA({
               type="button"
               onClick={onBackToTop}
               aria-label="Back to top"
-              className="hidden h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[rgba(15,23,42,0.45)] text-[#26C1D3] shadow-[0_16px_45px_rgba(0,0,0,0.32)] transition-[transform,box-shadow,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:translate-y-px sm:inline-flex"
+              className="hidden h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[rgba(15,23,42,0.45)] text-[#015FC4] shadow-[0_16px_45px_rgba(0,0,0,0.32)] transition-[transform,box-shadow,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-[rgba(15,23,42,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px sm:inline-flex"
             >
               <ArrowUpIcon className="h-5 w-5" />
             </button>
             <button
               type="button"
               onClick={() => setIsExpanded((v) => !v)}
-              aria-label="Talk to cybersecurity experts"
+              aria-label="More contact options"
               aria-expanded={isExpanded}
-              className={[
-                "inline-flex w-full items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold",
-                "transition-[transform,box-shadow,background-color] duration-200",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:scale-[0.99]",
-                isExpanded
-                  ? "bg-[rgba(15,23,42,0.55)] text-[#E5E7EB] shadow-[0_18px_50px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 hover:bg-[rgba(15,23,42,0.7)]"
-                  : "bg-[#26C1D3] text-[#050B14] shadow-[0_16px_40px_rgba(38,193,211,0.18)] hover:scale-[1.03] hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)]",
-              ].join(" ")}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-[rgba(15,23,42,0.45)] text-[#E5E7EB] shadow-[0_16px_45px_rgba(0,0,0,0.32)] transition-[transform,box-shadow,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-[rgba(15,23,42,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
+            >
+              <DotsIcon className="h-5 w-5 text-[#015FC4]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsExpanded(false);
+                openLeadForm({ source: "floating_cta_talk", service: "General Inquiry" });
+              }}
+              aria-label="Talk to cybersecurity experts"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-[#015FC4] px-6 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(1,95,196,0.18)] transition-[transform,box-shadow,background-color] duration-200 hover:scale-[1.03] hover:bg-[#014FAD] hover:shadow-[0_22px_60px_rgba(1,95,196,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:scale-[0.99]"
             >
               Talk to Experts →
             </button>
@@ -279,23 +316,28 @@ export default function MultiCTA({
                   <a
                     key={action.key}
                     href={action.href}
-                    onClick={() => setIsExpanded(false)}
+                    onClick={(e) => {
+                      setIsExpanded(false);
+                      if (action.key !== "assessment") return;
+                      e.preventDefault();
+                      openLeadForm({ source: "floating_cta_assessment", service: "General Inquiry" });
+                    }}
                     aria-label={action.ariaLabel}
                     className={[
                       "group inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold",
                       "transition-[transform,box-shadow,background-color,border-color,color] duration-200",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26C1D3]/60 active:scale-[0.99]",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:scale-[0.99]",
                       "hover:-translate-y-0.5",
                       isPrimary
-                        ? "bg-[#26C1D3] text-[#050B14] shadow-[0_16px_40px_rgba(38,193,211,0.18)] hover:bg-[#1EA7B8] hover:shadow-[0_22px_60px_rgba(38,193,211,0.28)]"
-                        : "border border-white/10 bg-[rgba(15,23,42,0.45)] text-[#E5E7EB] shadow-[0_16px_45px_rgba(0,0,0,0.32)] hover:border-[#26C1D3]/25 hover:bg-[rgba(15,23,42,0.65)]",
+                        ? "bg-[#015FC4] text-white shadow-[0_16px_40px_rgba(1,95,196,0.18)] hover:bg-[#014FAD] hover:shadow-[0_22px_60px_rgba(1,95,196,0.28)]"
+                        : "border border-white/10 bg-[rgba(15,23,42,0.45)] text-[#E5E7EB] shadow-[0_16px_45px_rgba(0,0,0,0.32)] hover:border-[#015FC4]/25 hover:bg-[rgba(15,23,42,0.65)]",
                       "sm:w-auto",
                     ].join(" ")}
                   >
                     <Icon
                       className={[
                         "h-4 w-4",
-                        isPrimary ? "text-[#050B14]" : "text-[#26C1D3]",
+                        isPrimary ? "text-white" : "text-[#015FC4]",
                       ].join(" ")}
                     />
                     <span>{action.label}</span>
