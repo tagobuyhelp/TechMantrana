@@ -94,7 +94,7 @@ export default function AboutSection() {
           >
             <div className="tm-kicker">Behind the Brand</div>
             <div className="mt-3 text-sm font-semibold tracking-tight text-[#E5E7EB] sm:text-base">
-              About TechMantrana
+              About Us
             </div>
             <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
               Where governance meets execution.
