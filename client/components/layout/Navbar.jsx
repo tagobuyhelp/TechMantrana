@@ -222,7 +222,7 @@ export default function Navbar() {
 
   const mobileNavLinks = useMemo(
     () => [
-      { key: "about", label: "About", href: "/#about" },
+      { key: "about", label: "Behind the Brand", href: "/#about" },
       { key: "services", label: "Services" },
       { key: "training", label: "Training", href: "/#training" },
       { key: "delivery", label: "Delivery", href: "/#delivery" },
@@ -266,7 +266,7 @@ export default function Navbar() {
         scheduleClose();
       }}
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6 lg:h-20">
+      <div className="mx-auto flex h-16 w-full max-w-[1300px] items-center justify-between px-6 lg:h-20">
         <div className="flex items-center gap-6">
           <Link
             href="/"
@@ -276,7 +276,7 @@ export default function Navbar() {
             <Image
               src="/images/logos/logoHorizontal.png"
               alt=""
-              width={390}
+              width={290}
               height={90}
               priority
               className="h-14 w-auto drop-shadow-[0_0_22px_rgba(1,95,196,0.22)] lg:h-16"
@@ -292,7 +292,7 @@ export default function Navbar() {
                 isActive={pathname === "/" && activeHash === "#about"}
                 icon={UserRound}
               >
-                About
+                Behind the Brand
               </NavItem>
             </li>
 
@@ -398,14 +398,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="tel:+919903142550"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-[#E5E7EB]/85 shadow-[0_18px_50px_rgba(0,0,0,0.35)] transition-[background-color,border-color,transform] duration-200 hover:scale-[1.02] hover:border-[#015FC4]/30 hover:bg-white/7 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:scale-[0.99]"
-            aria-label="Call +91 9903142550"
-          >
-            <Phone className="h-4 w-4 text-[#015FC4]" aria-hidden="true" />
-            +91 9903142550
-          </a>
+          
           <Link
             href="/#contact"
             onClick={(e) => {
