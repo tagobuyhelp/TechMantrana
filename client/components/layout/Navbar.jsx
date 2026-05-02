@@ -317,7 +317,7 @@ export default function Navbar() {
                 }
               >
                 <UserRound className="h-4 w-4 text-[#015FC4]" aria-hidden="true" />
-                About
+                Behind the Brand
                 <svg
                   width="14"
                   height="14"
