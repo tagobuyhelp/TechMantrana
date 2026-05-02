@@ -72,9 +72,30 @@ export default function HeroSection() {
           className="grid items-center gap-6 lg:grid-cols-2 lg:gap-6"
         >
           <motion.div variants={fadeUp} className="text-center lg:text-left">
-            <div className="inline-flex items-center justify-center rounded-full   bg-[#cc0044] px-4 py-1.5 text-[10px] md:text-[12px] font-semibold uppercase tracking-[0.18em] text-white">
-              Cybersecurity • GRC • Digital Risk
-            </div>
+            <motion.div
+              className="relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[#cc0044] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white md:text-[12px]"
+              animate={{
+                boxShadow: [
+                  "0 0 0 rgba(204,0,68,0)",
+                  "0 0 18px rgba(204,0,68,0.35)",
+                  "0 0 0 rgba(204,0,68,0)",
+                ],
+              }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <motion.span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 bg-linear-to-r from-transparent via-white/35 to-transparent blur-[1px]"
+                animate={{ x: ["0%", "220%"] }}
+                transition={{
+                  duration: 2.6,
+                  repeat: Infinity,
+                  ease: "linear",
+                  repeatDelay: 0.4,
+                }}
+              />
+              <span className="relative">Cybersecurity • GRC • Digital Risk</span>
+            </motion.div>
 
             <h1 className="mx-auto mt-4 max-w-xl font-heading text-[28px] leading-[1.1] font-bold tracking-tight text-balance sm:mt-5 sm:text-4xl sm:leading-[1.1] lg:mx-0 lg:max-w-2xl lg:text-5xl">
               Integrated <span className="text-[#015FC4]">Cyber</span>, Risk,{" "}
