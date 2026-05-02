@@ -70,7 +70,7 @@ export default function FoundersNoteSection() {
         aria-hidden="true"
       />
       <Container>
-        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -129,7 +129,7 @@ export default function FoundersNoteSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-160px" }}
-            className="grid gap-3 sm:gap-4"
+            className="grid gap-3 sm:gap-4 lg:flex lg:flex-col lg:justify-center"
           >
             {pillars.map((item) => (
               <motion.div key={item.title} variants={fadeUp}>
@@ -141,7 +141,7 @@ export default function FoundersNoteSection() {
                 Commitment
               </div>
               <div className="mt-2 leading-relaxed">
-                Clear governance, pragmatic execution, and audit-ready assurance —
+                Clear governance, pragmatic execution, and audit-ready assurance 
                 delivered with enterprise discipline.
               </div>
               <div className="mt-4 h-px w-10 bg-[#015FC4]/60" aria-hidden="true" />

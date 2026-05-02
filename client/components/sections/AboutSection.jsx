@@ -24,16 +24,16 @@ const trustCards = [
   },
   {
     title: "Defensible Outcomes",
-    description: "Not just compliant—security that stands up in practice",
+    description: "Not just compliant security that stands up in practice",
     icon: Layers,
   },
 ];
 
 const highlights = [
-  "Where governance meets execution—built for real-world resilience",
+  "Where governance meets execution built for real-world resilience",
   "Cybersecurity, risk, compliance, privacy, and resilience as one integrated capability",
   "Unified control approach across frameworks, audits, and regulators",
-  "Designed to be defensible—not only compliant",
+  "Designed to be defensible not only compliant",
 ];
 
 function StatCard({ title, description, icon: Icon }) {

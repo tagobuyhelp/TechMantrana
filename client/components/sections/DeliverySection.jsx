@@ -565,7 +565,7 @@ export default function DeliverySection() {
                 Built for enterprises operating across{" "}
                 <span className="text-[#015FC4]">India</span>,{" "}
                 <span className="text-[#7348C1]">GCC</span>, and{" "}
-                <span className="text-[#CC0044]">Europe</span>—mapped into a unified control approach with audit-ready evidence.
+                <span className="text-[#CC0044]">Europe</span> mapped into a unified control approach with audit-ready evidence.
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
                 Regulations grouped by region for fast scanning and clear delivery alignment.
