@@ -84,7 +84,7 @@ export default function Footer() {
           fill
           priority={false}
           sizes="100vw"
-          className="object-cover object-center opacity-25 sm:opacity-30 lg:opacity-40"
+          className="object-cover object-center opacity-15 sm:opacity-20 lg:opacity-25"
         />
         <div
           className="absolute inset-0"
@@ -121,9 +121,6 @@ export default function Footer() {
                 className="h-7 w-auto sm:h-8"
               />
             </Link>
-            <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#E5E7EB]/55">
-              Secure. Compliant. Resilient.
-            </div>
             <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-[#E5E7EB]/70 sm:mt-3">
               Intelligence Secured. Future Assured.
             </p>

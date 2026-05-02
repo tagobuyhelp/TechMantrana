@@ -19,12 +19,12 @@
   --tm-header-border-scrolled: rgba(1, 95, 196, 0.38);
 
   --tm-footer-border: rgba(255, 255, 255, 0.08);
-  --tm-footer-overlay-top: rgba(2, 6, 23, 0.08);
-  --tm-footer-overlay-mid: rgba(2, 6, 23, 0.22);
-  --tm-footer-overlay-bottom: rgba(2, 6, 23, 0.72);
-  --tm-footer-overlay-left: rgba(2, 6, 23, 0.08);
-  --tm-footer-overlay-mid-x: rgba(2, 6, 23, 0.26);
-  --tm-footer-overlay-right: rgba(2, 6, 23, 0.75);
+  --tm-footer-overlay-top: rgba(2, 6, 23, 0.3);
+  --tm-footer-overlay-mid: rgba(2, 6, 23, 0.55);
+  --tm-footer-overlay-bottom: rgba(2, 6, 23, 0.88);
+  --tm-footer-overlay-left: rgba(2, 6, 23, 0.3);
+  --tm-footer-overlay-mid-x: rgba(2, 6, 23, 0.6);
+  --tm-footer-overlay-right: rgba(2, 6, 23, 0.92);
 
   --tm-kicker-bg: rgba(204, 0, 68, 0.92);
   --tm-kicker-border: rgba(255, 255, 255, 0.12);
@@ -73,12 +73,12 @@ body {
     --tm-header-border-scrolled: rgba(1, 95, 196, 0.42);
 
     --tm-footer-border: rgba(255, 255, 255, 0.08);
-    --tm-footer-overlay-top: rgba(11, 18, 32, 0.08);
-    --tm-footer-overlay-mid: rgba(11, 18, 32, 0.25);
-    --tm-footer-overlay-bottom: rgba(11, 18, 32, 0.78);
-    --tm-footer-overlay-left: rgba(11, 18, 32, 0.08);
-    --tm-footer-overlay-mid-x: rgba(11, 18, 32, 0.3);
-    --tm-footer-overlay-right: rgba(11, 18, 32, 0.78);
+    --tm-footer-overlay-top: rgba(11, 18, 32, 0.34);
+    --tm-footer-overlay-mid: rgba(11, 18, 32, 0.6);
+    --tm-footer-overlay-bottom: rgba(11, 18, 32, 0.9);
+    --tm-footer-overlay-left: rgba(11, 18, 32, 0.34);
+    --tm-footer-overlay-mid-x: rgba(11, 18, 32, 0.66);
+    --tm-footer-overlay-right: rgba(11, 18, 32, 0.92);
 
     --tm-kicker-bg: rgba(204, 0, 68, 0.92);
     --tm-kicker-border: rgba(255, 255, 255, 0.12);

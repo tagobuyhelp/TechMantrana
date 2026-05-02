@@ -124,7 +124,7 @@ function ServiceCard({ service }) {
         </div>
 
         <div className="mt-3 flex-1 sm:mt-4">
-          <div className="text-sm font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#015FC4] sm:text-base">
+          <div className="text-xl font-semibold leading-snug text-[#E5E7EB] transition-colors group-hover:text-[#015FC4]">
             {service.title}
           </div>
           <p className="mt-2 text-xs leading-relaxed text-[#94A3B8] sm:text-sm">
@@ -198,9 +198,10 @@ export default function ServicesSection() {
           fill
           priority={false}
           sizes="100vw"
-          className="object-cover object-center opacity-25 sm:opacity-30 lg:opacity-40"
+          className="object-cover object-center opacity-15 sm:opacity-20 lg:opacity-25"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/82 via-[#050B14]/65 to-[#050B14]/88" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/98 via-[#050B14]/90 to-[#050B14]/82" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/86 via-[#050B14]/80 to-[#050B14]/94" />
       </div>
       <Container className="relative z-10">
         <div className="relative">

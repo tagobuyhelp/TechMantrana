@@ -1,17 +1,19 @@
 import "./globals.css";
 
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import LeadFormModal from "../components/ui/LeadFormModal";
 import MultiCTA from "../components/ui/MultiCTA";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
-const manrope = Manrope({
+const syne = Syne({
   subsets: ["latin"],
   variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -28,11 +30,11 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${manrope.variable} scroll-smooth`}
+      className={`${inter.variable} ${syne.variable} scroll-smooth`}
     >
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-(--tm-bg-base) font-body text-[#E5E7EB] antialiased"
+        className={`${inter.className} min-h-screen bg-(--tm-bg-base) font-body text-[#E5E7EB] antialiased`}
       >
         {children}
         <LeadFormModal />

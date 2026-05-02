@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Layers, Mail, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
+import { BookOpen, Layers, Mail, MapPin, ShieldCheck, UserRound } from "lucide-react";
 import { openLeadForm } from "../ui/LeadFormModal";
 
 function ChevronIcon({ className }) {
@@ -352,15 +352,6 @@ export default function MobileMenu({
               >
                 Talk to Experts →
               </Link>
-              <a
-                href="tel:+919903142550"
-                onClick={closeMenu}
-                aria-label="Call +91 9903142550"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#1E293B] bg-transparent px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
-              >
-                <Phone className="h-4 w-4 text-[#015FC4]" aria-hidden="true" />
-                +91 9903142550
-              </a>
               <Link
                 href="/#contact"
                 onClick={(e) => {

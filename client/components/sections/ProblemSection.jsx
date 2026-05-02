@@ -83,10 +83,10 @@ export default function ProblemSection() {
           fill
           priority={false}
           sizes="(max-width: 768px) 100vw, 98vw"
-          className="object-cover object-center opacity-25 sm:opacity-30 lg:opacity-40"
+          className="object-cover object-center opacity-15 sm:opacity-20 lg:opacity-25"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/95 via-[#050B14]/80 to-[#050B14]/55" />
-        <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/40 via-[#050B14]/25 to-[#050B14]/55" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#050B14]/98 via-[#050B14]/92 to-[#050B14]/78" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#050B14]/78 via-[#050B14]/82 to-[#050B14]/92" />
       </div>
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.55)_1px,transparent_0)] bg-size-[30px_30px]"

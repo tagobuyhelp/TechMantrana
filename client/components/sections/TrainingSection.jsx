@@ -56,7 +56,7 @@ function ProgramCard({ icon: Icon, title, description }) {
           <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
         <div className="min-w-0">
-          <div className="text-sm font-semibold text-[#E5E7EB] sm:text-base">
+          <div className="text-xl font-semibold text-[#E5E7EB]">
             {title}
           </div>
           <p className="mt-1 text-xs leading-relaxed text-[#A1AFC3] sm:text-sm">
