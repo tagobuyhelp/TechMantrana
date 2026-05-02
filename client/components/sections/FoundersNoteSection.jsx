@@ -57,6 +57,7 @@ export default function FoundersNoteSection() {
 
   return (
     <section
+      id="founders-note"
       className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
       aria-label="Founder's Note"
     >

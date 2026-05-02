@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   BadgeCheck,
@@ -159,14 +160,20 @@ export default function Navbar() {
 
   const servicesButtonId = useId();
   const servicesPanelId = useId();
+  const aboutButtonId = useId();
+  const aboutPanelId = useId();
 
   const openTimerRef = useRef(null);
   const closeTimerRef = useRef(null);
 
   const isServicesOpen = openDesktopMenu === "services";
+  const isAboutOpen = openDesktopMenu === "about";
 
   const isServicesActive = pathname === "/" && activeHash === "#services";
   const isRegionsActive = pathname === "/" && activeHash === "#regions";
+  const isAboutActive =
+    pathname === "/" &&
+    ["#about", "#founders-note", "#infosec"].includes(activeHash);
 
   const clearTimers = useCallback(() => {
     if (openTimerRef.current) window.clearTimeout(openTimerRef.current);
@@ -286,14 +293,121 @@ export default function Navbar() {
 
         <div className="hidden items-center justify-center md:flex">
           <ul className="flex items-center gap-2">
-            <li>
-              <NavItem
-                href="/#about"
-                isActive={pathname === "/" && activeHash === "#about"}
-                icon={UserRound}
+            <li className="relative">
+              <button
+                id={aboutButtonId}
+                type="button"
+                className={[
+                  "relative inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold tracking-tight transition-[color,background-color] duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px",
+                  "after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:opacity-0 after:bg-linear-to-r after:from-transparent after:via-[#015FC4] after:to-transparent after:transition-[transform,opacity] after:duration-300",
+                  "hover:after:scale-x-100 hover:after:opacity-100",
+                  isAboutOpen || isAboutActive
+                    ? "text-[#015FC4] after:scale-x-100 after:opacity-100"
+                    : "text-[#E5E7EB]/80 hover:text-[#015FC4]",
+                ].join(" ")}
+                aria-expanded={isAboutOpen}
+                aria-controls={aboutPanelId}
+                onMouseEnter={() => {
+                  if (!isDesktop) return;
+                  scheduleOpen("about");
+                }}
+                onFocus={() => setOpenDesktopMenu("about")}
+                onClick={() =>
+                  setOpenDesktopMenu((v) => (v === "about" ? null : "about"))
+                }
               >
-                Behind the Brand
-              </NavItem>
+                <UserRound className="h-4 w-4 text-[#015FC4]" aria-hidden="true" />
+                About
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  className={[
+                    "transition-transform duration-200",
+                    isAboutOpen ? "rotate-180" : "rotate-0",
+                  ].join(" ")}
+                >
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {isAboutOpen ? (
+                  <motion.div
+                    id={aboutPanelId}
+                    role="region"
+                    aria-labelledby={aboutButtonId}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="absolute left-1/2 top-full z-50 hidden w-[min(360px,calc(100vw-2rem))] -translate-x-1/2 md:block"
+                    onMouseEnter={() => {
+                      clearTimers();
+                      setOpenDesktopMenu("about");
+                    }}
+                  >
+                    <div className="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-[#0F172A] shadow-[0_22px_60px_rgba(0,0,0,0.6)] ring-1 ring-white/10 backdrop-blur-xl">
+                      <div className="grid gap-2 p-3">
+                        <Link
+                          href="/#about"
+                          onClick={() => setOpenDesktopMenu(null)}
+                          className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-semibold text-[#E5E7EB]/85 transition-[background-color,border-color,transform,color] duration-200 hover:translate-x-0.5 hover:border-[#015FC4]/25 hover:bg-white/7 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white">
+                              <UserRound className="h-4 w-4" aria-hidden="true" />
+                            </span>
+                            About Us
+                          </span>
+                          <span className="text-[#015FC4] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                            →
+                          </span>
+                        </Link>
+                        <Link
+                          href="/#founders-note"
+                          onClick={() => setOpenDesktopMenu(null)}
+                          className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-semibold text-[#E5E7EB]/85 transition-[background-color,border-color,transform,color] duration-200 hover:translate-x-0.5 hover:border-[#015FC4]/25 hover:bg-white/7 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white">
+                              <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+                            </span>
+                            Founder&apos;s Note
+                          </span>
+                          <span className="text-[#015FC4] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                            →
+                          </span>
+                        </Link>
+                        <Link
+                          href="/#infosec"
+                          onClick={() => setOpenDesktopMenu(null)}
+                          className="group flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-semibold text-[#E5E7EB]/85 transition-[background-color,border-color,transform,color] duration-200 hover:translate-x-0.5 hover:border-[#015FC4]/25 hover:bg-white/7 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white">
+                              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+                            </span>
+                            Certification
+                          </span>
+                          <span className="text-[#015FC4] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                            →
+                          </span>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </li>
 
             <li className="relative">
