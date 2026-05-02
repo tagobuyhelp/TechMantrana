@@ -21,8 +21,8 @@ export default function HomePage() {
         <ServicesSection />
         <TrainingSection />
         <AboutSection />
-        <InfoSecuritySection />
         <FoundersNoteSection />
+        <InfoSecuritySection />
         <DeliverySection />
         <CTASection />
       </main>
