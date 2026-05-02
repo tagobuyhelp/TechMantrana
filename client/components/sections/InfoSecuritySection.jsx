@@ -73,7 +73,7 @@ export default function InfoSecuritySection() {
             Information Security Statement
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
-            ISO/IEC 27001:2022 Certified. Our delivery is anchored in confidentiality, integrity, and availability—supported by clear controls and audit-ready evidence.
+            ISO/IEC 27001:2022 Certified. Our delivery is anchored in confidentiality, integrity, and availability supported by clear controls and audit-ready evidence.
           </p>
         </motion.div>
 
