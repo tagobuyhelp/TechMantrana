@@ -22,17 +22,17 @@ const pillars = [
 
 function PillarCard({ item }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3.5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-4">
+    <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-3.5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_circle_at_18%_0%,rgba(1,95,196,0.12),transparent_60%)] opacity-55" />
       <div className="relative">
         <div className="text-base font-semibold tracking-tight text-[#F8FAFC]">
           {item.title}
         </div>
-        <p className="mt-2 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
+        <p className="mt-1.5 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
           {item.description}
         </p>
       </div>
-      <div className="relative mt-auto pt-3.5" aria-hidden="true">
+      <div className="relative mt-auto pt-3" aria-hidden="true">
         <div className="h-px w-10 bg-[#015FC4]/60" />
       </div>
     </div>
@@ -48,7 +48,7 @@ export default function InfoSecuritySection() {
   return (
     <section
       id="infosec"
-      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-10 sm:py-14 md:py-16"
+      className="tm-section tm-section--alt relative overflow-hidden border-t border-white/10 py-8 sm:py-10 md:py-12"
       aria-label="Information Security and Data Privacy"
     >
       <div
@@ -72,7 +72,7 @@ export default function InfoSecuritySection() {
           <h2 className="mt-3 font-heading text-2xl font-semibold leading-[1.1] tracking-tight text-[#F8FAFC] sm:text-3xl lg:text-4xl">
             Information Security Statement
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
+          <p className="mt-2.5 text-sm leading-relaxed text-[#A1AFC3] sm:text-base">
             ISO/IEC 27001:2022 Certified. Our delivery is anchored in confidentiality, integrity, and availability supported by clear controls and audit-ready evidence.
           </p>
         </motion.div>
@@ -85,20 +85,20 @@ export default function InfoSecuritySection() {
             hidden: { opacity: 0 },
             show: { opacity: 1, transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
           }}
-          className="mt-7 grid gap-4 sm:mt-9 sm:gap-6 lg:grid-cols-12"
+          className="mt-5 grid gap-4 sm:mt-7 sm:gap-6"
         >
-          <motion.div variants={fadeUp} className="lg:col-span-5">
-            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3.5 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-4">
+          <motion.div variants={fadeUp}>
+            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-3 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur sm:p-3.5">
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(620px_circle_at_18%_0%,rgba(1,95,196,0.14),transparent_60%)] opacity-60" />
               <div className="relative flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-10 sm:w-10">
                   <BadgeCheck className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
                   <div className="text-sm font-semibold text-[#F8FAFC]">
                     ISO/IEC 27001:2022 Certified
                   </div>
-                  <div className="mt-2 space-y-1.5 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
+                  <div className="mt-1.5 space-y-1 text-[13px] leading-relaxed text-[#A1AFC3] sm:text-sm">
                     <p>
                       TechMantrana is committed to protecting the confidentiality, integrity, and availability of information across our operations and client engagements.
                     </p>
@@ -112,8 +112,8 @@ export default function InfoSecuritySection() {
                   </div>
                 </div>
               </div>
-              <div className="relative mt-3.5 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
+              <div className="relative mt-3 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
+                <span className="flex h-7.5 w-7.5 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
                   <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                 </span>
                 CIA-aligned controls across delivery
@@ -121,7 +121,7 @@ export default function InfoSecuritySection() {
             </div>
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-3 sm:gap-6 lg:col-span-7 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
             {pillars.map((item) => (
               <motion.div key={item.title} variants={fadeUp} className="h-full">
                 <PillarCard item={item} />

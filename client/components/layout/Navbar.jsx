@@ -280,14 +280,24 @@ export default function Navbar() {
             className="inline-flex items-center rounded-xl p-1 transition-[transform,background-color] duration-200 hover:scale-[1.01] hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
             aria-label="TechMantrana home"
           >
-            <Image
-              src="/images/logos/logoHorizontal.png"
-              alt=""
-              width={290}
-              height={90}
-              priority
-              className="h-14 w-auto drop-shadow-[0_0_22px_rgba(1,95,196,0.22)] lg:h-16"
-            />
+            <span className="flex items-center gap-1">
+              <Image
+                src="/images/logos/siteicon.webp"
+                alt=""
+                width={52}
+                height={52}
+                priority
+                className="h-14 w-14 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)] lg:h-14 lg:w-14"
+              />
+              <span className="flex flex-col leading-none">
+                <span className="font-heading text-lg font-semibold tracking-tight text-[#F8FAFC] lg:text-[28px] uppercase">
+                  Tech<span className="text-[#015FC4]">Mantrana</span>
+                </span>
+                <span className=" text-[10px] font-semibold tracking-[0.16em] text-[#E5E7EB]/80 lg:text-[9px]">
+                  Inspiring Excellence. Securing the Future
+                </span>
+              </span>
+            </span>
           </Link>
         </div>
 

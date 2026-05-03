@@ -235,14 +235,24 @@ export default function MobileMenu({
               className="inline-flex items-center rounded-xl p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
               aria-label="TechMantrana home"
             >
-              <Image
-                src="/images/logos/logoHorizontal.png"
-                alt=""
-                width={240}
-                height={40}
-                priority={false}
-                className="h-7 w-auto"
-              />
+              <span className="flex items-center gap-3">
+                <Image
+                  src="/images/logos/siteicon.webp"
+                  alt=""
+                  width={40}
+                  height={40}
+                  priority={false}
+                  className="h-9 w-9 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)]"
+                />
+                <span className="flex flex-col leading-none">
+                  <span className="font-heading text-base font-semibold tracking-tight text-[#F8FAFC]">
+                    Tech<span className="text-[#015FC4]">Mantrana</span>
+                  </span>
+                  <span className="mt-1 text-[10px] font-semibold tracking-[0.16em] text-[#E5E7EB]/60">
+                    Inspiring Excellence. Securing the Future
+                  </span>
+                </span>
+              </span>
             </Link>
             <button
               ref={closeBtnRef}
