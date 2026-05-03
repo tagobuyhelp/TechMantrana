@@ -25,12 +25,12 @@ export default function MegaMenu({
           transition={{ duration: 0.24, ease: "easeOut" }}
           className="absolute left-1/2 top-full z-50 hidden w-screen -translate-x-1/2 md:block"
         >
-          <div className="mx-auto w-full max-w-4xl px-6">
+          <div className="mx-auto max-w-fit max-w-6xl px-6">
             <div className="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-[#0F172A] shadow-[0_22px_60px_rgba(0,0,0,0.6)] ring-1 ring-white/10 backdrop-blur-xl supports-backdrop-filter:bg-[#0F172A]">
               <div
                 className={[
                   "grid gap-3 p-5 lg:p-6",
-                  isTablet ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2",
+                  isTablet ? "grid-cols-1 sm:grid-cols-1" : "grid-cols-1",
                 ].join(" ")}
               >
                 {categories.map((category) => (

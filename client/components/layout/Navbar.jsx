@@ -10,20 +10,14 @@ import {
   BadgeCheck,
   BookOpen,
   Bug,
-  Cloud,
-  Cpu,
   FileLock,
-  Gavel,
   Globe,
   Layers,
   Mail,
   MapPin,
-  Phone,
   Radar,
-  Shield,
   ShieldCheck,
   UserRound,
-  UserCog,
   Wrench,
 } from "lucide-react";
 
@@ -38,94 +32,43 @@ const hoverCloseDelayMs = 160;
 
 const servicesCategories = [
   {
-    title: "GRC & Advisory",
+    title: "Core Services",
     items: [
       {
-        title: "GRC & Compliance",
-        description: "Governance and regulatory alignment",
+        title: "Governance, Risk and Security Advisory",
+        description: "Strategy, governance design, risk management, and security leadership",
         href: "/#services",
         icon: ShieldCheck,
       },
       {
-        title: "Cybersecurity Consulting",
-        description: "Strategy, programs, and assurance",
-        href: "/#services",
-        icon: BadgeCheck,
-      },
-      {
-        title: "Regulatory Requirements",
-        description: "Controls mapped to industry frameworks",
-        href: "/#services",
-        icon: Gavel,
-      },
-    ],
-  },
-  {
-    title: "Security & Risk",
-    items: [
-      {
-        title: "Risk Assessment",
-        description: "Risk visibility across systems and processes",
-        href: "/#services",
-        icon: Radar,
-      },
-      {
-        title: "Threat Analysis",
-        description: "Threat modeling and adversary mapping",
-        href: "/#services",
-        icon: Shield,
-      },
-      {
-        title: "VAPT & Testing",
-        description: "Offensive testing and validation",
-        href: "/#services",
-        icon: Bug,
-      },
-    ],
-  },
-  {
-    title: "Engineering",
-    items: [
-      {
-        title: "DevSecOps",
-        description: "Secure CI/CD with policy and automation",
-        href: "/#services",
-        icon: Wrench,
-      },
-      {
-        title: "Security Engineering",
-        description: "Architecture and secure design reviews",
-        href: "/#services",
-        icon: Cpu,
-      },
-      {
-        title: "Cloud Security",
-        description: "Secure workloads across cloud platforms",
-        href: "/#services",
-        icon: Cloud,
-      },
-    ],
-  },
-  {
-    title: "Resilience & Privacy",
-    items: [
-      {
-        title: "Data Privacy",
-        description: "Privacy-by-design and data protection",
+        title: "Regulatory Compliance and Privacy",
+        description: "Cybersecurity and data protection alignment across regions",
         href: "/#services",
         icon: FileLock,
       },
       {
-        title: "Business Continuity",
-        description: "Operational resilience planning",
+        title: "Security Assessment and Testing",
+        description: "Independent validation through structured testing and simulation",
+        href: "/#services",
+        icon: Bug,
+      },
+      {
+        title: "Risk Assessment and Threat Analysis",
+        description: "Identify, quantify, and prioritize risk and exposure",
+        href: "/#services",
+        icon: Radar,
+      },
+      {
+        title: "Business Continuity and Operational Resilience",
+        description: "Plan, test, and validate readiness to recover from disruption",
         href: "/#services",
         icon: Globe,
       },
       {
-        title: "Virtual CISO",
-        description: "Executive leadership on-demand",
+        title: "Critical Infrastructure and OT Security",
+        description: "Protect OT/ICS environments and essential services",
         href: "/#services",
-        icon: UserCog,
+        icon: Wrench,
       },
     ],
   },
