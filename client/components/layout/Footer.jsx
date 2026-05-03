@@ -105,8 +105,8 @@ export default function Footer() {
         className="pointer-events-none absolute -right-24 top-10 h-130 w-130 rounded-full bg-[radial-gradient(circle_at_center,rgba(1,95,196,0.14),transparent_62%)] blur-2xl"
         aria-hidden="true"
       />
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-16 lg:py-20">
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-12">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-10 lg:py-12">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-8">
           <div className="md:col-span-1">
             <Link
               href="/"
@@ -120,7 +120,7 @@ export default function Footer() {
                   width={52}
                   height={52}
                   priority
-                  className="h-14 w-14 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)] lg:h-14 lg:w-14"
+                  className="h-12 w-12 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)] lg:h-12 lg:w-12"
                 />
                 <span className="flex flex-col leading-none">
                   <span className="font-heading text-lg font-semibold tracking-tight text-[#F8FAFC] lg:text-[28px] uppercase">
@@ -132,16 +132,16 @@ export default function Footer() {
                 </span>
               </span>
             </Link>
-            <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-[#E5E7EB]/70 sm:mt-3">
+            <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#E5E7EB]/70">
               Inspiring Excellence. Securing the Future.
             </p>
 
-            <div className="mt-3.5 flex items-center gap-2 sm:mt-6 sm:gap-3">
+            <div className="mt-3 flex items-center gap-2 sm:gap-3">
               <a
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px sm:h-11 sm:w-11"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
                 aria-label="LinkedIn"
               >
                 <LinkedInMark className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
@@ -150,14 +150,14 @@ export default function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px sm:h-11 sm:w-11"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
                 aria-label="X"
               >
                 <XMark className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
               </a>
               <a
                 href="mailto:contact@techmantrana.com"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px sm:h-11 sm:w-11"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
                 aria-label="Email"
               >
                 <Mail className="h-4.5 w-4.5 sm:h-5 sm:w-5" aria-hidden="true" />
@@ -165,22 +165,22 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 md:contents">
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 md:contents">
             <div>
               <h3 className="text-sm font-semibold text-[#E5E7EB]">Quick links</h3>
-              <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
+              <ul className="mt-2.5 space-y-2 sm:mt-3 sm:space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.href} className="group">
                     <Link
                       href={link.href}
                       className={[
-                        "relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-[border-color,background-color,transform] duration-200 sm:px-4 sm:py-3",
+                        "relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-[border-color,background-color,transform] duration-200 sm:px-3.5 sm:py-2.5",
                         "after:pointer-events-none after:absolute after:inset-x-4 after:bottom-0 after:h-px after:bg-linear-to-r after:from-transparent after:via-white/12 after:to-transparent after:opacity-80",
                         "hover:-translate-y-0.5 hover:border-[#015FC4]/28 hover:bg-[rgba(15,23,42,0.55)]",
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px",
                       ].join(" ")}
                     >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white transition-[border-color,background-color] duration-200 group-hover:border-[#014FAD] group-hover:bg-[#014FAD] sm:h-10 sm:w-10">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white transition-[border-color,background-color] duration-200 group-hover:border-[#014FAD] group-hover:bg-[#014FAD] sm:h-9 sm:w-9">
                         <link.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                       </span>
                       <span>{link.label}</span>
@@ -192,11 +192,11 @@ export default function Footer() {
 
             <div>
               <h3 className="text-sm font-semibold text-[#E5E7EB]">Services</h3>
-              <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
+              <ul className="mt-2.5 space-y-2 sm:mt-3 sm:space-y-2.5">
                 {services.map((item) => (
                   <li key={item.label}>
-                    <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-4 sm:py-3">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white sm:h-10 sm:w-10">
+                    <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-3.5 sm:py-2.5">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white sm:h-9 sm:w-9">
                         <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                       </span>
                       <span>{item.label}</span>
@@ -240,7 +240,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 border-t border-(--tm-footer-border) pt-4 sm:mt-16 sm:gap-4 sm:pt-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2.5 border-t border-(--tm-footer-border) pt-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-[#E5E7EB]/60">
             © {new Date().getFullYear()} TechMantrana. All rights reserved.
           </p>
