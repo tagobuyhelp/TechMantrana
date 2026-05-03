@@ -10,6 +10,7 @@ import {
   Landmark,
   LayoutGrid,
   MapPin,
+  Moon,
   RefreshCcw,
   Shield,
   Wrench,
@@ -61,47 +62,72 @@ const steps = [
 const regionalAlignment = [
   {
     title: "India",
-    label: "National & Sectoral",
-    subtitle: "Security, privacy, and incident expectations",
+    badge: "IN",
+    label: "RBI • SEBI • IRDAI",
+    subtitle: "Sectoral cybersecurity and national privacy requirements",
     icon: Landmark,
     accent: {
-      text: "text-[#015FC4]",
+      badge: "bg-[#015FC4]",
+      bullet: "bg-[#015FC4]",
+      chip: "border-[#015FC4]/25 bg-[#015FC4]/10 text-[#015FC4]",
+      map: "text-[#015FC4]",
       dot: "bg-[#015FC4]",
-      glow: "from-[#015FC4]/16",
-      line: "via-[#015FC4]/55",
     },
     items: [
-      "DPDP Act",
-      "CERT-In Directions (2022)",
-      "RBI Cyber Security Framework",
-      "SEBI Cyber Resilience",
+      "RBI Master Direction on IT and Cybersecurity",
+      "SEBI Cybersecurity and Resilience Framework (CSCRF)",
+      "IRDAI Information and Cybersecurity Guidelines",
+      "Digital Personal Data Protection Act (DPDP Act)",
+      "NCIIPC Critical Information Infrastructure Guidelines",
+      "MeitY Guidelines on Information Security",
     ],
+    chips: ["RBI", "SEBI CSCRF", "IRDAI", "DPDP Act", "NCIIPC", "MeitY"],
   },
   {
     title: "GCC",
-    label: "UAE Frameworks",
-    subtitle: "Government and financial sector alignment",
+    badgeIcon: Moon,
+    label: "UAE • Saudi • Qatar",
+    subtitle: "Information assurance, banking, and national cyber frameworks",
     icon: MapPin,
     accent: {
-      text: "text-[#7348C1]",
-      dot: "bg-[#7348C1]",
-      glow: "from-[#7348C1]/14",
-      line: "via-[#7348C1]/50",
+      badge: "bg-[#015FC4]",
+      bullet: "bg-[#015FC4]",
+      chip: "border-[#015FC4]/25 bg-[#015FC4]/10 text-[#015FC4]",
+      map: "text-[#015FC4]",
+      dot: "bg-[#015FC4]",
     },
-    items: ["UAE: ISR (DESC)", "UAE IA (NESA)", "SVF (CBUAE)"],
+    items: [
+      "UAE IAR - UAE Information Assurance Regulation",
+      "DESC ISR - Dubai Electronic Security Centre Information Security Regulation",
+      "CBUAE SVF - Central Bank of UAE Stored Value Facilities Regulation",
+      "ADHICS - Abu Dhabi Healthcare Information and Cyber Security Standard",
+      "NCA Framework and SAMA Cyber Security and BCM Framework (Saudi Arabia)",
+      "Qatar NIA Policy, NISCF, and QCB Cybersecurity Requirement (Qatar)",
+    ],
+    chips: ["UAE IAR", "DESC ISR", "CBUAE SVF", "ADHICS", "NCA", "SAMA", "Qatar NIA", "NISCF", "QCB"],
   },
   {
     title: "Europe",
-    label: "EU / UK",
-    subtitle: "Operational resilience and cyber directives",
+    badge: "EU",
+    label: "EU Standards",
+    subtitle: "Privacy, resilience, and security management standards",
     icon: Globe2,
     accent: {
-      text: "text-[#CC0044]",
-      dot: "bg-[#CC0044]",
-      glow: "from-[#CC0044]/12",
-      line: "via-[#CC0044]/45",
+      badge: "bg-[#015FC4]",
+      bullet: "bg-[#015FC4]",
+      chip: "border-[#7348C1]/25 bg-[#7348C1]/10 text-[#7348C1]",
+      map: "text-[#7348C1]",
+      dot: "bg-[#7348C1]",
     },
-    items: ["GDPR", "NIS2 Directive", "DORA", "ISO/IEC 27001 alignment"],
+    items: [
+      "GDPR - General Data Protection Regulation",
+      "NIS2 Directive - Network and Information Security",
+      "DORA - Digital Operational Resilience Act",
+      "ISO/IEC 27001 - Information Security Management",
+      "ISO 22301 - Business Continuity Management",
+      "ISO/IEC 27701 - Privacy Information Management",
+    ],
+    chips: ["GDPR", "NIS2", "DORA", "ISO 27001", "ISO 22301", "ISO 27701"],
   },
 ];
 
@@ -238,89 +264,55 @@ function StepCard({ step }) {
 }
 
 function RegionAlignmentCard({ region, activeRegion, onActivate }) {
-  const Icon = region.icon;
   const accent = region.accent;
   const isActive = activeRegion ? activeRegion === region.title : true;
 
   return (
     <div
       className={[
-        "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-linear-to-b from-[#071426]/90 via-[#061324]/88 to-[#050B14]/95 p-4 shadow-[0_22px_70px_rgba(0,0,0,0.55)] backdrop-blur transition-[border-color,opacity] duration-200 sm:p-5 lg:min-h-[320px]",
-        "hover:border-white/15",
+        "relative flex h-[500px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.72)] p-4 shadow-[0_16px_46px_rgba(0,0,0,0.28)] backdrop-blur transition-[border-color,background-color,box-shadow,transform,opacity] duration-200 sm:h-full sm:min-h-[440px] sm:p-5",
+        "hover:-translate-y-0.5 hover:border-[#015FC4]/25 hover:bg-[rgba(15,23,42,0.82)] hover:shadow-[0_26px_70px_rgba(0,0,0,0.5)]",
         activeRegion ? (isActive ? "opacity-100" : "opacity-55") : "opacity-100",
       ].join(" ")}
       onMouseEnter={() => onActivate(region.title)}
       onMouseLeave={() => onActivate(null)}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(700px circle at 18% 0%, rgba(1,95,196,0.08), transparent 58%), radial-gradient(520px circle at 84% 8%, rgba(148,163,184,0.06), transparent 60%)`,
-        }}
-      />
-      <div
-        className={[
-          "pointer-events-none absolute left-0 top-0 h-16 w-40 bg-linear-to-r to-transparent opacity-70",
-          accent.glow,
-        ].join(" ")}
-        aria-hidden="true"
-      />
-      <div
-        className={[
-          "pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent to-transparent opacity-80",
-          accent.line,
-        ].join(" ")}
-        aria-hidden="true"
-      />
-
-      <div className="relative flex items-start justify-between gap-6">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <span className={["h-2 w-2 shrink-0 rounded-full", accent.dot].join(" ")} />
-            <div className="text-lg font-semibold tracking-tight text-[#E5E7EB] sm:text-xl">
-              {region.title}
-            </div>
-          </div>
-          <div className="mt-2">
-            <div
-              className={[
-                "text-[11px] font-semibold uppercase tracking-[0.14em]",
-                accent.text,
-              ].join(" ")}
-            >
-              {region.label}
-            </div>
-            <div className="mt-1 text-xs text-[#94A3B8] sm:text-sm">
-              {region.subtitle}
-            </div>
-          </div>
+      <div className="flex items-center gap-3">
+        <div className={["flex h-10 w-10 items-center justify-center rounded-2xl text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-11 sm:w-11", accent.badge].join(" ")}>
+          {region.badgeIcon ? (
+            <region.badgeIcon className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <span className="text-sm font-bold tracking-[0.12em]">{region.badge}</span>
+          )}
         </div>
-        <div
-          className={[
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.22)] sm:h-12 sm:w-12",
-          ].join(" ")}
-        >
-          <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+        <div className="min-w-0">
+          <div className="text-base font-semibold tracking-tight text-[#E5E7EB] sm:text-lg">
+            {region.title}
+          </div>
         </div>
       </div>
 
-      <div className="relative mt-4 flex flex-1 flex-col">
-        <div className="h-px w-10 bg-white/10" />
-        <div className="mt-4 flex flex-wrap gap-2">
-          {region.items.map((item) => (
+      <ul className="mt-3 flex-1 space-y-2 text-xs leading-relaxed text-[#A1AFC3] sm:mt-4 sm:space-y-3 sm:text-sm">
+        {region.items.map((item) => (
+          <li key={item} className="flex gap-3">
+            <span className={["mt-1.5 h-2 w-2 shrink-0 rounded-full", accent.bullet].join(" ")} aria-hidden="true" />
+            <span className="min-w-0">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      {region.chips?.length ? (
+        <div className="mt-auto flex flex-wrap gap-2 pt-4 sm:pt-5">
+          {region.chips.map((chip) => (
             <span
-              key={item}
-              className={[
-                "inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium tracking-tight text-[#E5E7EB]/75 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
-              ].join(" ")}
+              key={chip}
+              className={["inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-tight", accent.chip].join(" ")}
             >
-              <span className={["h-1.5 w-1.5 shrink-0 rounded-full", accent.dot].join(" ")} />
-              <span className="min-w-0 break-words">{item}</span>
+              {chip}
             </span>
           ))}
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }
@@ -447,7 +439,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
                 cy={m.y}
                 r={isHighlighted(m.region.title) ? 5.5 : 4.5}
                 fill="currentColor"
-                className={m.region.accent.text}
+                className={m.region.accent.map}
                 opacity={isHighlighted(m.region.title) ? 1 : 0.6}
               />
               <circle
@@ -455,7 +447,7 @@ function RegionMapCard({ regions, activeRegion, onActivate }) {
                 cy={m.y}
                 r={isHighlighted(m.region.title) ? 13 : 10}
                 stroke="currentColor"
-                className={m.region.accent.text}
+                className={m.region.accent.map}
                 opacity={isHighlighted(m.region.title) ? 0.3 : 0.14}
               />
             </g>
@@ -572,25 +564,20 @@ export default function DeliverySection() {
               </p>
             </div>
 
-            <div className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-12 lg:items-start lg:gap-6">
-              <motion.div variants={item} className="lg:col-span-4">
-                <RegionMapCard
-                  regions={regionalAlignment}
-                  activeRegion={activeRegion}
-                  onActivate={setActiveRegion}
-                />
-              </motion.div>
-              <div className="grid items-stretch gap-4 sm:grid-cols-3 sm:gap-6 lg:col-span-8 lg:grid-cols-3">
-                {regionalAlignment.map((region) => (
-                  <motion.div key={region.title} variants={item} className="h-full">
-                    <RegionAlignmentCard
-                      region={region}
-                      activeRegion={activeRegion}
-                      onActivate={setActiveRegion}
-                    />
-                  </motion.div>
-                ))}
-              </div>
+            <div className="mt-6  flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mt-8 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
+              {regionalAlignment.map((region) => (
+                <motion.div
+                  key={region.title}
+                  variants={item}
+                  className="h-[500px] w-[85%] shrink-0 snap-start self-stretch sm:h-full sm:w-auto sm:shrink sm:snap-none"
+                >
+                  <RegionAlignmentCard
+                    region={region}
+                    activeRegion={activeRegion}
+                    onActivate={setActiveRegion}
+                  />
+                </motion.div>
+              ))}
             </div>
 
             <div className="mt-8 flex justify-center">
@@ -602,7 +589,7 @@ export default function DeliverySection() {
                 }}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#015FC4] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(1,95,196,0.16)] transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.03] hover:bg-[#014FAD] hover:shadow-[0_24px_60px_rgba(1,95,196,0.22)] active:scale-[0.99] active:bg-[#013F8F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
               >
-                Explore Regulatory Alignment <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Talk to Us About Your Needs <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

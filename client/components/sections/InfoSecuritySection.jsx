@@ -112,8 +112,8 @@ export default function InfoSecuritySection() {
                   </div>
                 </div>
               </div>
-              <div className="relative mt-3 flex items-center gap-2 text-xs font-medium text-[#E5E7EB]/75">
-                <span className="flex h-7.5 w-7.5 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
+              <div className="relative mt-3 flex items-center gap-3 text-[13px] font-medium text-[#A1AFC3] sm:text-sm">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_12px_34px_rgba(1,95,196,0.2)]">
                   <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                 </span>
                 CIA-aligned controls across delivery

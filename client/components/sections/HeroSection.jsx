@@ -106,9 +106,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="mx-auto mt-3 max-w-xl text-[14px] leading-relaxed text-[#E5E7EB]/90 sm:mt-4 sm:text-[17px] lg:mx-0">
-              TechMantrana helps enterprises across India, GCC, and Europe
-              strengthen resilience and achieve regulatory alignment through
-              advisory-led cybersecurity, risk, and governance programs.
+              TechMantrana helps enterprises across India, the GCC, and Europe strengthen cyber resilience, regulatory alignment, and digital trust through integrated cybersecurity, risk, governance, privacy, testing, and assurance services.
             </p>
 
             <div className="mx-auto mt-5 flex w-full max-w-xl flex-row items-stretch justify-center gap-2 sm:mt-7 sm:gap-4 md:justify-start lg:mx-0 lg:max-w-md lg:justify-start">
