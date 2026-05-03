@@ -181,7 +181,7 @@ export default function Footer() {
                       <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white transition-[border-color,background-color] duration-200 group-hover:border-[#014FAD] group-hover:bg-[#014FAD] sm:h-9 sm:w-9">
                         <link.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                       </span>
-                      <span>{link.label}</span>
+                      <span className="text-[10px] md:text-[12px]">{link.label}</span>
                     </Link>
                   </li>
                 ))}
@@ -195,9 +195,9 @@ export default function Footer() {
                   <li key={item.label}>
                     <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-3.5 sm:py-2.5">
                       <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white sm:h-9 sm:w-9">
-                        <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
+                        <item.icon className="h-3.5 w-6 sm:h-4 sm:w-4" aria-hidden="true" />
                       </span>
-                      <span>{item.label}</span>
+                      <span className="text-[10px] md:text-[12px]">{item.label}</span>
                       <span
                         className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-linear-to-r from-transparent via-white/12 to-transparent opacity-80"
                         aria-hidden="true"
