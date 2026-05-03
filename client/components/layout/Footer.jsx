@@ -132,9 +132,7 @@ export default function Footer() {
                 </span>
               </span>
             </Link>
-            <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#E5E7EB]/70">
-              Inspiring Excellence. Securing the Future.
-            </p>
+           
 
             <div className="mt-3 flex items-center gap-2 sm:gap-3">
               <a

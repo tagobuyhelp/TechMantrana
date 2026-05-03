@@ -230,13 +230,13 @@ export default function Navbar() {
                 width={52}
                 height={52}
                 priority
-                className="h-14 w-14 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)] lg:h-14 lg:w-14"
+                className="h-10 w-10 drop-shadow-[0_0_18px_rgba(1,95,196,0.28)] lg:h-14 lg:w-14"
               />
               <span className="flex flex-col leading-none">
-                <span className="font-heading text-lg font-semibold tracking-tight text-[#F8FAFC] lg:text-[28px] uppercase">
+                <span className="font-heading text-[25px] font-semibold tracking-tight text-[#F8FAFC] lg:text-[28px] uppercase">
                   Tech<span className="text-[#015FC4]">Mantrana</span>
                 </span>
-                <span className=" text-[10px] font-semibold tracking-[0.16em] text-[#E5E7EB]/80 lg:text-[9px]">
+                <span className=" text-[8px] font-semibold tracking-[0.16em] text-[#E5E7EB]/80 lg:text-[9px]">
                   Inspiring Excellence. Securing the Future
                 </span>
               </span>
