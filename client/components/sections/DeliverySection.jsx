@@ -564,7 +564,8 @@ export default function DeliverySection() {
               </p>
             </div>
 
-            <div className="mt-6  flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mt-8 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
+            <div className="mt-6  flex snap-x snap-mandatory items-stretch 
+            gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mt-8 sm:grid sm:snap-none sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
               {regionalAlignment.map((region) => (
                 <motion.div
                   key={region.title}
