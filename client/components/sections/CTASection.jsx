@@ -323,7 +323,7 @@ export default function CTASection() {
                     type="tel"
                     value={values.phone}
                     onChange={onChange("phone")}
-                    placeholder="+91 9903142550"
+                    placeholder="+91 9XX XXX XXX"
                     error={touched.phone ? errors.phone : undefined}
                   />
                   <InputField

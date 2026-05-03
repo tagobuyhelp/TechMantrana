@@ -32,13 +32,14 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${syne.variable} scroll-smooth`}
     >
+      
       <body
         suppressHydrationWarning
         className={`${inter.className} min-h-screen bg-(--tm-bg-base) font-body text-[#E5E7EB] antialiased`}
       >
         {children}
         <LeadFormModal />
-        <MultiCTA assessmentHref="/#contact" />
+        <MultiCTA />
       </body>
     </html>
   );

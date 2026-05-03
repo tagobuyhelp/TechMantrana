@@ -132,7 +132,7 @@ export default function Footer() {
                 </span>
               </span>
             </Link>
-           
+
 
             <div className="mt-3 flex items-center gap-2 sm:gap-3">
               <a
@@ -154,7 +154,7 @@ export default function Footer() {
                 <XMark className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
               </a>
               <a
-                href="mailto:contact@techmantrana.com"
+                href="mailto:Info@techmantrana.com"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white shadow-[0_16px_50px_rgba(1,95,196,0.22)] transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#014FAD] hover:bg-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px"
                 aria-label="Email"
               >
@@ -193,7 +193,10 @@ export default function Footer() {
               <ul className="mt-2.5 space-y-2 sm:mt-3 sm:space-y-2.5">
                 {services.map((item) => (
                   <li key={item.label}>
-                    <div className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] sm:px-3.5 sm:py-2.5">
+                    <Link
+                      href="/#services"
+                      className="relative flex items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(15,23,42,0.38)] px-2.5 py-2 text-sm text-[#E5E7EB]/80 shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-[#015FC4]/28 hover:bg-[rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60 active:translate-y-px sm:px-3.5 sm:py-2.5"
+                    >
                       <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-[#015FC4] text-white sm:h-9 sm:w-9">
                         <item.icon className="h-3.5 w-6 sm:h-4 sm:w-4" aria-hidden="true" />
                       </span>
@@ -202,7 +205,7 @@ export default function Footer() {
                         className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-linear-to-r from-transparent via-white/12 to-transparent opacity-80"
                         aria-hidden="true"
                       />
-                    </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -228,10 +231,10 @@ export default function Footer() {
                   <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                 </span>
                 <a
-                  href="mailto:contact@techmantrana.com"
+                  href="mailto:Info@techmantrana.com"
                   className="mt-2 font-medium text-[#015FC4] transition-colors hover:text-[#014FAD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#015FC4]/60"
                 >
-                  contact@techmantrana.com
+                  Info@techmantrana.com
                 </a>
               </div>
             </div>
